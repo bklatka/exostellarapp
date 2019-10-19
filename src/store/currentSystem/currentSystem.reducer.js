@@ -70,10 +70,13 @@ export const currentSystemReducer = (state = initialState, action = {}) => {
       return { ...state, star: { ...action.payload } };
 
     case ADD_PLANET_TO_SYSTEM:
+      const planets = state.planets.filter(
+        planet => planet.id !== action.payload.id
+      );
       return {
         ...state,
         planets: [
-          ...state.planets,
+          ...planets,
           {
             ...action.payload,
             planetThumbnailUrl: getRandomPlanetThumbnailUrl()

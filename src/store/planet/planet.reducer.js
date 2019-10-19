@@ -1,12 +1,16 @@
 import {
   CLEAR_PLANET_FORM,
+  EDIT_PLANET,
   SET_PLANET_HUE_COLOR,
   SET_PLANET_NAME,
   SET_PLANET_SIZE,
   SET_PLANET_TEMPERATURE_ADJUSTMENT,
   SET_PLANET_TYPE
 } from "./planet.actions";
-import { getPlanetTypes } from "../../planetSettings";
+import {
+  calculatePlanetMassPercent,
+  getPlanetTypes
+} from "../../planetSettings";
 
 const initialState = {
   id: null,
@@ -31,7 +35,17 @@ export const planetFormReducer = (state = initialState, action = {}) => {
       return { ...state, hueColor: action.payload };
     case CLEAR_PLANET_FORM:
       return { ...initialState };
+    case EDIT_PLANET:
+      return createPlanetFormDataFromCurrentSystemPlanet(action.payload);
     default:
       return state;
   }
 };
+
+const createPlanetFormDataFromCurrentSystemPlanet = planetInSystem => ({
+  ...planetInSystem,
+  sizePercent: calculatePlanetMassPercent(
+    planetInSystem.type,
+    planetInSystem.mass
+  )
+});

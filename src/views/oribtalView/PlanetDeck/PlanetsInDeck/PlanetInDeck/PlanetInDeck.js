@@ -15,13 +15,15 @@ import {
 import { MONITOR_STATE } from "../../../../../store/orbitalView/orbitalView.reducer";
 import { Redirect } from "react-router-dom";
 import { UNASSIGN_PLANET_FROM_ORBIG } from "../../../../../store/currentSystem/currentSystem.actions";
+import { EDIT_PLANET } from "../../../../../store/planet/planet.actions";
 
 const PlanetInDeck = ({ planet, editable }) => {
   const dispatch = useDispatch();
   const [redirect, setRedirect] = useState();
 
   const handleEdit = () => {
-    setRedirect(`/planer/${planet.name}`);
+    dispatch({ type: EDIT_PLANET, payload: planet });
+    setRedirect(`/planet/${planet.id}`);
   };
 
   const setOrbitInSelectingMode = () => {
