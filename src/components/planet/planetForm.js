@@ -6,7 +6,6 @@ import nanoid from "nanoid";
 
 import {
   CLEAR_PLANET_FORM,
-  EDIT_PLANET,
   SET_PLANET_HUE_COLOR,
   SET_PLANET_NAME,
   SET_PLANET_SIZE,
@@ -22,6 +21,7 @@ import {
 import { ADD_PLANET_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
 import { Redirect } from "react-router-dom";
 import { isNil } from "ramda";
+import TypesCarousel from "../typesCarousel";
 
 const PlanetForm = ({ planet }) => {
   const [redirect, setRedirect] = useState();
@@ -75,6 +75,9 @@ const PlanetForm = ({ planet }) => {
   if (redirect) {
     return <Redirect to={redirect} push />;
   }
+  const planetTypeIndex = planetTypes.findIndex(
+    planetType => planetType === planet.type
+  );
 
   return (
     <div>
@@ -84,11 +87,9 @@ const PlanetForm = ({ planet }) => {
         onChange={handlePlanetNameChange}
       />
       <h3>type</h3>
-      <Slider
-        min={0}
-        max={planetTypes.length - 1}
-        step={1}
-        value={planetTypes.findIndex(planetType => planetType === planet.type)}
+      <TypesCarousel
+        selectedTypeIndex={planetTypeIndex}
+        types={planetTypes}
         onChange={handlePlanetTypeChange}
       />
       <h3>wielkosc</h3>

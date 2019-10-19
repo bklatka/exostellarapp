@@ -19,6 +19,7 @@ import {
 } from "../../store/star/star.actions";
 import { ADD_STAR_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
 import { Redirect } from "react-router-dom";
+import TypesCarousel from "../typesCarousel";
 
 const StarForm = ({ star, currentSystemStar }) => {
   const [redirect, setRedirect] = useState();
@@ -79,6 +80,8 @@ const StarForm = ({ star, currentSystemStar }) => {
     return <Redirect to={redirect} push />;
   }
 
+  const starTypeIndex = starTypes.findIndex(starType => starType === star.type);
+
   return (
     <div>
       <Input
@@ -87,11 +90,9 @@ const StarForm = ({ star, currentSystemStar }) => {
         onChange={handleStarNameChange}
       />
       <h3>type</h3>
-      <Slider
-        min={0}
-        max={starTypes.length - 1}
-        step={1}
-        value={starTypes.findIndex(starType => starType === star.type)}
+      <TypesCarousel
+        selectedTypeIndex={starTypeIndex}
+        types={starTypes}
         onChange={handleStarTypeChange}
       />
       <h3>wielkosc</h3>
