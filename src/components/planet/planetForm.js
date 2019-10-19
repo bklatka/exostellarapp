@@ -5,7 +5,7 @@ import { HuePicker } from "react-color";
 import nanoid from "nanoid";
 
 import {
-  ADD_PLANET_TO_SYSTEM,
+  CLEAR_PLANET_FORM,
   SET_PLANET_HUE_COLOR,
   SET_PLANET_NAME,
   SET_PLANET_SIZE,
@@ -18,6 +18,7 @@ import {
   getPlanetTypes,
   PLANETS_MASS_RANGE
 } from "../../planetSettings";
+import { ADD_PLANET_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
 
 const PlanetForm = ({ planet }) => {
   const planetTypes = getPlanetTypes();
@@ -52,7 +53,21 @@ const PlanetForm = ({ planet }) => {
 
   const addPlanetToSystem = () => {
     const id = planet.id === null ? createPlanetId() : planet.id;
-    dispatch({ type: ADD_PLANET_TO_SYSTEM, payload: { ...planet, id } });
+    const planetMass = calculatePlanetMassValueFromPercent(
+      planet.type,
+      planet.sizePercent
+    );
+    const planetSystem = {
+      id,
+      name: planet.name,
+      type: planet.type,
+      mass: planetMass,
+      temperatureAdjustment: planet.temperatureAdjustment,
+      hueColor: planet.hueColor
+    };
+
+    dispatch({ type: ADD_PLANET_TO_SYSTEM, payload: planetSystem });
+    dispatch({ type: CLEAR_PLANET_FORM });
   };
 
   return (
@@ -94,6 +109,10 @@ const PlanetForm = ({ planet }) => {
   );
 };
 
-const createPlanetId = () => nanoid(10);
+let planetId = 0;
+const createPlanetId = () => {
+  planetId += 1;
+  return planetId;
+};
 
 export default PlanetForm;
