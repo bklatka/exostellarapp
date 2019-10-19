@@ -8,6 +8,7 @@ import {
   getMonitorState,
   getPlanetInHand
 } from "../../../../store/orbitalView/orbitalView.selectors";
+import { ASSIGN_PLANET_TO_ORBIT } from "../../../../store/currentSystem/currentSystem.actions";
 
 const Orbit = ({ orbitSize }) => {
   const dispatch = useDispatch();
@@ -16,7 +17,10 @@ const Orbit = ({ orbitSize }) => {
   const resetMonitor = () => {
     if (monitorState === MONITOR_STATE.ZOOMED) {
       dispatch({ type: SET_MONITOR_STATE, payload: MONITOR_STATE.NORMAL });
-      console.warn(planet);
+      dispatch({
+        type: ASSIGN_PLANET_TO_ORBIT,
+        payload: { planet, orbitSize }
+      });
     }
   };
   return <StyledOrbit onClick={resetMonitor} size={orbitSize} />;

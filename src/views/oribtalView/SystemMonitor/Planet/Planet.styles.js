@@ -43,6 +43,7 @@ export const StyledPlanet = styled.div`
   background-color: blue;
   margin-left: -5px;
   margin-top: -5px;
+  <<<<<<<HEAD
   position: relative;
   ${({ planetType }) => {
     if (planetType === "rock") {
@@ -99,4 +100,8 @@ export const StyledPlanetOverlayTexture = styled.div`
   ${overlay};
   mix-blend-mode: initial;
   background-color: ${({ planetTexture }) => planetTexture};
+=======
+
+  background-color: ${({ color }) => color};
+>>>>>>> e7079fd47f57f367862b8828af0d8fb023b17de4
 `;

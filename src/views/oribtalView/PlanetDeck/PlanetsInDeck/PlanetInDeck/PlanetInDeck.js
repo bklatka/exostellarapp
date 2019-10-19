@@ -14,8 +14,9 @@ import {
 } from "../../../../../store/orbitalView/orbitalView.actions";
 import { MONITOR_STATE } from "../../../../../store/orbitalView/orbitalView.reducer";
 import { Redirect } from "react-router-dom";
+import { UNASSIGN_PLANET_FROM_ORBIG } from "../../../../../store/currentSystem/currentSystem.actions";
 
-const PlanetInDeck = ({ planet }) => {
+const PlanetInDeck = ({ planet, editable }) => {
   const dispatch = useDispatch();
   const [redirect, setRedirect] = useState();
 
@@ -32,9 +33,13 @@ const PlanetInDeck = ({ planet }) => {
     return <Redirect to={redirect} push />;
   }
 
+  const removeFromOrbit = () => {
+    dispatch({ type: UNASSIGN_PLANET_FROM_ORBIG, payload: planet });
+  };
+
   return (
     <Wrapper>
-      <Image imgUrl={planet.imgUrl} />
+      <Image imgUrl={planet.planetThumbnailUrl} />
 
       <Content>
         <Info>
@@ -42,7 +47,12 @@ const PlanetInDeck = ({ planet }) => {
           <p>Mass: {planet.mass}</p>
         </Info>
         <Actions>
-          <button onClick={setOrbitInSelectingMode}>Send to orbit</button>
+          {!editable && (
+            <button onClick={setOrbitInSelectingMode}>Send to orbit</button>
+          )}
+          {editable && (
+            <button onClick={removeFromOrbit}>Remove from orbit</button>
+          )}
           <button onClick={handleEdit}>edit</button>
         </Actions>
       </Content>
@@ -50,12 +60,17 @@ const PlanetInDeck = ({ planet }) => {
   );
 };
 
+PlanetInDeck.defaultProps = {
+  editable: false
+};
+
 PlanetInDeck.propTypes = {
   planet: PropTypes.shape({
     name: PropTypes.string.isRequired,
     mass: PropTypes.number.isRequired,
-    imgUrl: PropTypes.string.isRequired
-  })
+    planetThumbnailUrl: PropTypes.string.isRequired
+  }),
+  editable: PropTypes.bool
 };
 
 export default PlanetInDeck;
