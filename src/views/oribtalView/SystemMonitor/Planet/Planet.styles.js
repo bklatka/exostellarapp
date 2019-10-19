@@ -14,7 +14,7 @@ export const StyledPlanetWrapper = styled.div`
   width: ${({ orbitSize }) => orbitSize * ORBIT_MULTIPLIER + SUN_SIZE}px;
   height: ${({ orbitSize }) => orbitSize * ORBIT_MULTIPLIER + SUN_SIZE}px;
   border-radius: 50%;
-  z-index: ${({ orbitSize }) => 80 - orbitSize};
+  z-index: ${({ orbitSize }) => 500 - orbitSize * 10 + 1};
   position: absolute;
   top: 50%;
   left: 50%;

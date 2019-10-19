@@ -8,7 +8,7 @@ export const StyledOrbit = styled.div`
   height: ${({ size }) => size * ORBIT_MULTIPLIER + SUN_SIZE}px;
   border-radius: 50%;
   border: 1px solid #3f3f3f;
-  z-index: ${({ size }) => 50 - size};
+  z-index: ${({ size }) => 500 - size * 10};
   position: absolute;
   top: 50%;
   left: 50%;
