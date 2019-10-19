@@ -7,9 +7,10 @@ import {
 } from "./SystemMonitor.styles";
 import { useSelector } from "react-redux";
 import { getMonitorState } from "../../../store/orbitalView/orbitalView.selectors";
+import { getCurrentSystemOrbits } from "../../../store/currentSystem/currentSystem.selectors";
 
 const SystemMonitor = () => {
-  const orbits = [4, 8, 16, 32];
+  const orbits = useSelector(getCurrentSystemOrbits);
   const monitorState = useSelector(getMonitorState);
   return (
     <StyledSystemMonitorWrapper state={monitorState}>

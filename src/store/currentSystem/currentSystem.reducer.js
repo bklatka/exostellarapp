@@ -31,7 +31,8 @@ const mockPlanets = [
 
 const initialState = {
   planets: mockPlanets,
-  star: {}
+  star: {},
+  orbits: [4, 8, 16, 32]
 };
 
 export const currentSystemReducer = (state = initialState, action = {}) => {
