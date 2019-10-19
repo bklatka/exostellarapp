@@ -11,8 +11,8 @@ import { useDispatch } from "react-redux";
 import {
   SET_MONITOR_STATE,
   SET_PLANET_IN_HAND
-} from "../../../../store/orbitalView/orbitalView.actions";
-import { MONITOR_STATE } from "../../../../store/orbitalView/orbitalView.reducer";
+} from "../../../../../store/orbitalView/orbitalView.actions";
+import { MONITOR_STATE } from "../../../../../store/orbitalView/orbitalView.reducer";
 import { Redirect } from "react-router-dom";
 
 const PlanetInDeck = ({ planet }) => {
