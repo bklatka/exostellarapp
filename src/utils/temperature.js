@@ -27,5 +27,5 @@ export const calculatePlanetDistance = fromOrbit => fromOrbit / 4;
 export const getPlanetTemperature = (planet, star) => {
   const distanceFromStar = calculatePlanetDistance(planet.orbit);
   // TODO: map bondAlbedo and greenhgouse effect
-  return calculateTemperature(star.mass, distanceFromStar, 0.29, 1);
+  return calculateTemperature(star.mass, distanceFromStar, 29, 1);
 };

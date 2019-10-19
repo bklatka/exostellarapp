@@ -9,7 +9,10 @@ import {
   StyledPlanetTemp,
   StyledPlanetWrapper
 } from "./Planet.styles";
-import { getPlanetTemperature } from "../../../../utils/temperature";
+import {
+  getPlanetTemperature,
+  kelvinToCelcius
+} from "../../../../utils/temperature";
 import { useSelector } from "react-redux";
 import { getCurrentSystemStar } from "../../../../store/currentSystem/currentSystem.selectors";
 
@@ -22,7 +25,7 @@ const planetType = "gas";
 
 const Planet = ({ planet }) => {
   const star = useSelector(getCurrentSystemStar);
-  const planetTemp = getPlanetTemperature(planet, { mass: 1 });
+  const planetTemp = kelvinToCelcius(getPlanetTemperature(planet, { mass: 1 }));
   return (
     <StyledPlanetWrapper orbitSize={planet.orbit}>
       <StyledPlanet planetType={planetType}>

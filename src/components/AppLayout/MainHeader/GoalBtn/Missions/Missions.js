@@ -7,7 +7,10 @@ import {
   getCurrentSystemPlanets
 } from "../../../../../store/currentSystem/currentSystem.selectors";
 import { isGoalFulfilled } from "../../../../../utils/goals.service";
-import { GOAL_FULFILLED } from "../../../../../store/currentMission/currentMission.actions";
+import {
+  GOAL_FULFILLED,
+  GOAL_NOT_FULFILLED
+} from "../../../../../store/currentMission/currentMission.actions";
 
 const Missions = props => {
   const currentSystem = useSelector(getCurrentSystem);
@@ -22,6 +25,8 @@ const Missions = props => {
       .forEach(goal => {
         if (isGoalFulfilled(goal, currentSystem)) {
           dispatch({ type: GOAL_FULFILLED, payload: goal });
+        } else {
+          dispatch({ type: GOAL_NOT_FULFILLED, payload: goal });
         }
       });
   }, [planets, goals, currentSystem, dispatch]);

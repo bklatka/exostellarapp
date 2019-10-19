@@ -1,5 +1,5 @@
 import { VALIDATION_TYPES } from "../../utils/goals.service";
-import { GOAL_FULFILLED } from "./currentMission.actions";
+import { GOAL_FULFILLED, GOAL_NOT_FULFILLED } from "./currentMission.actions";
 
 const mockGoals = [
   {
@@ -24,6 +24,19 @@ export const currentMissionReducer = (state = initialState, action = {}) => {
           return {
             ...goal,
             fullfilled: true
+          };
+        }
+        return goal;
+      });
+      return { ...state, goals: updatedGoals };
+    }
+    case GOAL_NOT_FULFILLED: {
+      const fullfilledGoal = action.payload;
+      const updatedGoals = [...state.goals].map(goal => {
+        if (goal.id === fullfilledGoal.id) {
+          return {
+            ...goal,
+            fullfilled: false
           };
         }
         return goal;
