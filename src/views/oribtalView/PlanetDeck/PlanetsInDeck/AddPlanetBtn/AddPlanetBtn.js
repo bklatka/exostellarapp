@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 const AddPlanetBtn = () => {
   const [redirect, setRedirect] = useState();
   const redirectToNewPlanetPage = () => {
-    setRedirect("/new-planet");
+    setRedirect("/planet");
   };
 
   if (redirect) {
