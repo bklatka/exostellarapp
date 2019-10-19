@@ -1,11 +1,15 @@
-import { SET_MONITOR_STATE, SET_PLANET_IN_HAND } from "./orbitalView.actions";
+import {
+  RESET_ORBITAL_VIEW,
+  SET_MONITOR_STATE,
+  SET_PLANET_IN_HAND
+} from "./orbitalView.actions";
 
 export const MONITOR_STATE = {
   NORMAL: "normal",
   ZOOMED: "zoomed"
 };
 
-const initialState = {
+export const initialState = {
   monitorState: MONITOR_STATE.NORMAL,
   planetInHand: null
 };
@@ -16,6 +20,8 @@ export const orbitalViewReducer = (state = initialState, action = {}) => {
       return { ...state, monitorState: action.payload };
     case SET_PLANET_IN_HAND:
       return { ...state, planetInHand: action.payload };
+    case RESET_ORBITAL_VIEW:
+      return initialState;
     default:
       return state;
   }

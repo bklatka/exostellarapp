@@ -1,6 +1,7 @@
 import {
   CLEAR_PLANET_FORM,
   EDIT_PLANET,
+  RESET_PLANET,
   SET_PLANET_HUE_COLOR,
   SET_PLANET_NAME,
   SET_PLANET_SIZE,
@@ -12,7 +13,7 @@ import {
   getPlanetTypes
 } from "../../planetSettings";
 
-const initialState = {
+export const initialState = {
   id: null,
   name: "",
   type: getPlanetTypes()[0],
@@ -37,6 +38,8 @@ export const planetFormReducer = (state = initialState, action = {}) => {
       return { ...initialState };
     case EDIT_PLANET:
       return createPlanetFormDataFromCurrentSystemPlanet(action.payload);
+    case RESET_PLANET:
+      return initialState;
     default:
       return state;
   }

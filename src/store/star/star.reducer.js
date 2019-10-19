@@ -1,4 +1,5 @@
 import {
+  RESET_STAR,
   SET_STAR_NAME,
   SET_STAR_SIZE,
   SET_STAR_TEMPERATURE,
@@ -6,7 +7,7 @@ import {
 } from "./star.actions";
 import { getStarTypes } from "../../starSettings";
 
-const initialState = {
+export const initialState = {
   name: "",
   type: getStarTypes()[0],
   sizePercent: 50,
@@ -23,6 +24,8 @@ export const starReducer = (state = initialState, action = {}) => {
       return { ...state, sizePercent: action.payload };
     case SET_STAR_TEMPERATURE:
       return { ...state, temperaturePercent: action.payload };
+    case RESET_STAR:
+      return initialState;
     default:
       return state;
   }

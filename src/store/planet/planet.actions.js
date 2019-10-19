@@ -7,3 +7,4 @@ export const SET_PLANET_HUE_COLOR = "SET_PLANET_HUE_COLOR";
 
 export const CLEAR_PLANET_FORM = "CLEAR_PLANET_FORM";
 export const EDIT_PLANET = "EDIT_PLANET";
+export const RESET_PLANET = "RESET_PLANET";

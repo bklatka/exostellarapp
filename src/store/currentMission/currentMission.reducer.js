@@ -1,5 +1,9 @@
 import { VALIDATION_TYPES } from "../../utils/goals.service";
-import { GOAL_FULFILLED, GOAL_NOT_FULFILLED } from "./currentMission.actions";
+import {
+  GOAL_FULFILLED,
+  GOAL_NOT_FULFILLED,
+  RESET_CURRENT_MISSION
+} from "./currentMission.actions";
 
 const mockGoals = [
   {
@@ -43,6 +47,9 @@ export const currentMissionReducer = (state = initialState, action = {}) => {
       });
       return { ...state, goals: updatedGoals };
     }
+    case RESET_CURRENT_MISSION:
+      return initialState;
+
     default:
       return state;
   }

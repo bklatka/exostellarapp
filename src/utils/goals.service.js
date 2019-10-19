@@ -28,3 +28,7 @@ export const isGoalFulfilled = (goal, currentSystem) => {
     return !validatorExec(currentSystem);
   });
 };
+
+export const isMissionFullfilled = (goals, currentSystem) => {
+  return !goals.find(goal => !isGoalFulfilled(goal, currentSystem));
+};
