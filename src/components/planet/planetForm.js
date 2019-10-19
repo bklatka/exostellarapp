@@ -62,12 +62,9 @@ const PlanetForm = ({ planet }) => {
       planet.sizePercent
     );
     const planetSystem = {
+      ...planet,
       id,
-      name: planet.name,
-      type: planet.type,
-      mass: planetMass,
-      temperatureAdjustment: planet.temperatureAdjustment,
-      hueColor: planet.hueColor
+      mass: planetMass
     };
 
     dispatch({ type: ADD_PLANET_TO_SYSTEM, payload: planetSystem });
