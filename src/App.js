@@ -1,6 +1,6 @@
 import React from "react";
 import { createStore } from "redux";
-import rootReducer from "./store/reducers";
+import rootReducer from "./store";
 import { Provider } from "react-redux";
 import "./styles/main.scss";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
