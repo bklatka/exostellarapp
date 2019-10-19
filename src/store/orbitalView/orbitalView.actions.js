@@ -1,0 +1,1 @@
+export const SET_MONITOR_STATE = "SET_MONITOR_STATE";
