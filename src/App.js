@@ -4,6 +4,7 @@ import rootReducer from "./store";
 import { Provider } from "react-redux";
 import "./styles/main.scss";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
+import PlanetView from "./views/planetView";
 import OrbitalView from "./views/oribtalView/orbitalView";
 
 const store = createStore(
@@ -15,8 +16,9 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Route path="/" component={() => <Redirect to={"/orbit"} />} />
         <Route path="/orbit" component={OrbitalView} />
+        <Route path="/planet/:id?" component={PlanetView} />
+        <Route exact path="/" component={() => <Redirect to={"/orbit"} />} />
       </Router>
     </Provider>
   );
