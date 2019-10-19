@@ -35,4 +35,6 @@ export const StyledPlanet = styled.div`
   background-color: blue;
   margin-left: -5px;
   margin-top: -5px;
+
+  background-color: ${({ color }) => color};
 `;

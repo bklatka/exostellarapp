@@ -12,6 +12,7 @@ export const StyledSystemMonitorWrapper = styled.section`
   position: relative;
   transition: all 1.2s cubic-bezier(0.5, -0.28, 0.34, 1.07);
   overflow: hidden;
+
   ${({ state }) =>
     state === MONITOR_STATE.ZOOMED &&
     css`
