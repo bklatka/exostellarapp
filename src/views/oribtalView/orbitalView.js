@@ -14,7 +14,7 @@ const OrbitalView = props => {
   const isFinished = isMissionFullfilled(missionGoals, system);
 
   if (isFinished) {
-    return () => <Redirect to={"/congrats"} />;
+    return <Redirect to={"/congrats"} />;
   }
   return (
     <AppLayout style={{ flex: "1", display: "flex", flexDirection: "column" }}>
