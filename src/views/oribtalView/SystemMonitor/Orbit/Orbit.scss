@@ -1,0 +1,10 @@
+
+
+
+.orbit {
+
+  &:after {
+    content: attr(data-size);
+  }
+
+}
