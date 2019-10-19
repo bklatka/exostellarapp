@@ -2,6 +2,9 @@ import React from "react";
 import AddPlanetBtn from "./AddPlanetBtn/AddPlanetBtn";
 import PlanetInDeck from "./PlanetInDeck/PlanetInDeck";
 import { SinglePlanetWrapper, StyledPlanetDeck } from "./PlanetDeck.styles";
+import { useSelector } from "react-redux";
+import { getMonitorState } from "../../../store/orbitalView/orbitalView.selectors";
+import { MONITOR_STATE } from "../../../store/orbitalView/orbitalView.reducer";
 
 const UNSELECTED_PLANETS = [
   {
@@ -27,8 +30,9 @@ const DECK_SIZE = 10;
 
 const PlanetDeck = () => {
   const planets = UNSELECTED_PLANETS;
+  const monitorState = useSelector(getMonitorState);
   return (
-    <StyledPlanetDeck>
+    <StyledPlanetDeck showInfo={monitorState === MONITOR_STATE.SELECTING}>
       {planets.map(planet => (
         <SinglePlanetWrapper key={planet.name}>
           <PlanetInDeck planet={planet} />
