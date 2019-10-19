@@ -1,5 +1,13 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { ORBIT_MULTIPLIER, SUN_SIZE } from "../Orbit/Orbit.styles";
+import { rgba } from "polished";
+
+const overlay = css`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: inherit;
+`;
 
 const rotate = keyframes`
   0% {
@@ -35,4 +43,60 @@ export const StyledPlanet = styled.div`
   background-color: blue;
   margin-left: -5px;
   margin-top: -5px;
+  position: relative;
+  ${({ planetType }) => {
+    if (planetType === "rock") {
+      return css`
+        background-color: #7b7b7b;
+      `;
+    } else if (planetType === "ice") {
+      return css`
+        background-color: #6b7db6;
+      `;
+    } else if (planetType === "gas") {
+      return css`
+        background-color: #b6a26b;
+      `;
+    }
+  }}
+`;
+
+export const StyledPlanetOverlayAtmosphereColor = styled.div`
+  ${overlay};
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+  background-color: ${({ atmosphereHue }) => atmosphereHue};
+`;
+
+export const StyledPlanetOverlayTemperatureAdjustment = styled.div`
+  mix-blend-mode: soft-light;
+  opacity: ${({ temperatureIntensity }) => temperatureIntensity / 100};
+
+  ${({ temperatureIntensity }) => {
+    if (temperatureIntensity < 50) {
+      return css`
+        background-color: #ff0000;
+      `;
+    } else if (temperatureIntensity === 50) {
+      return css`
+        background-color: transparent;
+      `;
+    } else if (temperatureIntensity > 50) {
+      return css`
+        background-color: #007eff;
+      `;
+    }
+  }}
+`;
+
+export const StyledPlanetOverlayStarShading = styled.div`
+  ${overlay};
+  mix-blend-mode: overlay;
+  background-image: ${({ starShading }) => starShading};
+`;
+
+export const StyledPlanetOverlayTexture = styled.div`
+  ${overlay};
+  mix-blend-mode: initial;
+  background-color: ${({ planetTexture }) => planetTexture};
 `;
