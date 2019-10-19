@@ -21,12 +21,17 @@ const Missions = props => {
 
   useEffect(() => {
     goals
+      .filter(goal => goal.fullfilled)
+      .forEach(goal => {
+        if (!isGoalFulfilled(goal, currentSystem)) {
+          dispatch({ type: GOAL_NOT_FULFILLED, payload: goal });
+        }
+      });
+    goals
       .filter(goal => !goal.fullfilled)
       .forEach(goal => {
         if (isGoalFulfilled(goal, currentSystem)) {
           dispatch({ type: GOAL_FULFILLED, payload: goal });
-        } else {
-          dispatch({ type: GOAL_NOT_FULFILLED, payload: goal });
         }
       });
   }, [planets, goals, currentSystem, dispatch]);
