@@ -5,9 +5,9 @@ export const PLANET_TYPE = {
 };
 
 export const PLANETS_MASS_RANGE = {
-  [PLANET_TYPE.GAS_GIANT]: { min: 0.08, max: 50 },
-  [PLANET_TYPE.ICE_GIANT]: { min: 20, max: 60 },
-  [PLANET_TYPE.ROCKY_PLANET]: { min: 60, max: 100 }
+  [PLANET_TYPE.GAS_GIANT]: { min: 0.26, max: 1064.26 },
+  [PLANET_TYPE.ICE_GIANT]: { min: 13, max: 17.15 },
+  [PLANET_TYPE.ROCKY_PLANET]: { min: 0.01, max: 16.06 }
 };
 
 export const getPlanetTypes = () => Object.keys(PLANET_TYPE);
