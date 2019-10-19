@@ -1,1 +1,1 @@
-export const getStarMass = state => state.star.starMass;
+export const getStarFormData = state => state.starForm;
