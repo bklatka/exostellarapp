@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const StyledSystemMonitor = styled.section`
   height: 250px;
-  transform: rotateX(65deg) scale(2);
+  transform: rotateX(45deg) scale(1.5);
   transition: all 1.2s cubic-bezier(0.5, -0.28, 0.34, 1.07);
 `;
 
