@@ -5,7 +5,7 @@ import SystemMonitor from "./SystemMonitor/SystemMonitor";
 
 const OrbitalView = props => {
   return (
-    <AppLayout className={"orbital-view"}>
+    <AppLayout style={{ flex: "1", display: "flex", flexDirection: "column" }}>
       <SystemMonitor />
       <PlanetDeck />
     </AppLayout>

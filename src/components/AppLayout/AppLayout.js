@@ -1,12 +1,13 @@
 import React from "react";
 import MainHeader from "./MainHeader/MainHeader";
+import { StyledAppLayout } from "./AppLayout.styles";
 
 const AppLayout = ({ children, ...restProps }) => {
   return (
-    <div {...restProps}>
+    <StyledAppLayout {...restProps}>
       <MainHeader />
       {children}
-    </div>
+    </StyledAppLayout>
   );
 };
 

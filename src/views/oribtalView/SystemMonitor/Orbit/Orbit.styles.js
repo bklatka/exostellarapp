@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SUN_SIZE = 20;
-export const ORBIT_MULTIPLIER = 10;
+export const ORBIT_MULTIPLIER = 5;
 
 export const StyledOrbit = styled.div`
   width: ${({ size }) => size * ORBIT_MULTIPLIER + SUN_SIZE}px;

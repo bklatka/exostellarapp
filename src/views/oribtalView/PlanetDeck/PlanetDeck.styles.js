@@ -3,6 +3,9 @@ import styled from "styled-components/macro";
 export const SinglePlanetWrapper = styled.li``;
 
 export const StyledPlanetDeck = styled.ul`
+  flex: 1;
+  overflow: auto;
+  padding: 0 2rem;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
