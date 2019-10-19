@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Button, Form, Input, Slider } from "antd";
+import { Button, Input, Slider } from "antd";
 import { HuePicker } from "react-color";
 import nanoid from "nanoid";
 
@@ -19,8 +19,10 @@ import {
   PLANETS_MASS_RANGE
 } from "../../planetSettings";
 import { ADD_PLANET_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
+import { Redirect } from "react-router-dom";
 
 const PlanetForm = ({ planet }) => {
+  const [redirect, setRedirect] = useState();
   const planetTypes = getPlanetTypes();
   const planetMassRange = PLANETS_MASS_RANGE[planet.type];
   const planetMass = calculatePlanetMassValueFromPercent(
@@ -68,7 +70,12 @@ const PlanetForm = ({ planet }) => {
 
     dispatch({ type: ADD_PLANET_TO_SYSTEM, payload: planetSystem });
     dispatch({ type: CLEAR_PLANET_FORM });
+    setRedirect("/orbit");
   };
+
+  if (redirect) {
+    return <Redirect to={redirect} push />;
+  }
 
   return (
     <div>
@@ -109,10 +116,8 @@ const PlanetForm = ({ planet }) => {
   );
 };
 
-let planetId = 0;
 const createPlanetId = () => {
-  planetId += 1;
-  return planetId;
+  return nanoid(10);
 };
 
 export default PlanetForm;

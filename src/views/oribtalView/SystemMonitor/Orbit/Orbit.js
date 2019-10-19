@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { StyledOrbit } from "./Orbit.styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,12 @@ const Orbit = ({ orbitSize }) => {
   const dispatch = useDispatch();
   const monitorState = useSelector(getMonitorState);
   const planet = useSelector(getPlanetInHand);
+
+  useEffect(() => {
+    // reset monitor state on load
+    dispatch({ type: SET_MONITOR_STATE, payload: MONITOR_STATE.NORMAL });
+  }, [dispatch]);
+
   const resetMonitor = () => {
     if (monitorState === MONITOR_STATE.ZOOMED) {
       dispatch({ type: SET_MONITOR_STATE, payload: MONITOR_STATE.NORMAL });

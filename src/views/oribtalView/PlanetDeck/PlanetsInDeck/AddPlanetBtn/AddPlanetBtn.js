@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+import { StyledAddBtn } from "./AddPlanetBtn.styles";
 
 const AddPlanetBtn = () => {
   const [redirect, setRedirect] = useState();
@@ -11,11 +12,7 @@ const AddPlanetBtn = () => {
     return <Redirect to={redirect} push />;
   }
 
-  return (
-    <button className="add-planet-to-dock" onClick={redirectToNewPlanetPage}>
-      +
-    </button>
-  );
+  return <StyledAddBtn onClick={redirectToNewPlanetPage}>+</StyledAddBtn>;
 };
 
 export default AddPlanetBtn;
