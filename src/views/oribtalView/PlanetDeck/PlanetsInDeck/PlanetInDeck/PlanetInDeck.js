@@ -14,7 +14,10 @@ import {
 } from "../../../../../store/orbitalView/orbitalView.actions";
 import { MONITOR_STATE } from "../../../../../store/orbitalView/orbitalView.reducer";
 import { Redirect } from "react-router-dom";
-import { UNASSIGN_PLANET_FROM_ORBIG } from "../../../../../store/currentSystem/currentSystem.actions";
+import {
+  REMOVE_PLANET_FROM_SYSTEM,
+  UNASSIGN_PLANET_FROM_ORBIG
+} from "../../../../../store/currentSystem/currentSystem.actions";
 
 const PlanetInDeck = ({ planet, editable }) => {
   const dispatch = useDispatch();
@@ -37,6 +40,10 @@ const PlanetInDeck = ({ planet, editable }) => {
     dispatch({ type: UNASSIGN_PLANET_FROM_ORBIG, payload: planet });
   };
 
+  const removePlanetFromSystem = () => {
+    dispatch({ type: REMOVE_PLANET_FROM_SYSTEM, payload: planet.id });
+  };
+
   return (
     <Wrapper>
       <Image imgUrl={planet.planetThumbnailUrl} />
@@ -54,6 +61,7 @@ const PlanetInDeck = ({ planet, editable }) => {
             <button onClick={removeFromOrbit}>Remove from orbit</button>
           )}
           <button onClick={handleEdit}>edit</button>
+          <button onClick={removePlanetFromSystem}>remove</button>
         </Actions>
       </Content>
     </Wrapper>
