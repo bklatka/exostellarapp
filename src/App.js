@@ -1,9 +1,9 @@
 import React from "react";
-import "./App.css";
 import { createStore } from "redux";
 import rootReducer from "./store/reducers";
 import { Provider } from "react-redux";
 import TestComponent from "./components/testComponent/testComponent";
+import "./styles/main.scss";
 
 const store = createStore(
   rootReducer,
