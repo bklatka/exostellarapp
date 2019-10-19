@@ -1,6 +1,5 @@
-import styled, { keyframes, css } from "styled-components";
+import styled, { css, keyframes } from "styled-components/macro";
 import { ORBIT_MULTIPLIER, SUN_SIZE } from "../Orbit/Orbit.styles";
-import { rgba } from "polished";
 
 const overlay = css`
   width: 100%;
@@ -43,7 +42,6 @@ export const StyledPlanet = styled.div`
   background-color: blue;
   margin-left: -5px;
   margin-top: -5px;
-  <<<<<<<HEAD
   position: relative;
   ${({ planetType }) => {
     if (planetType === "rock") {
@@ -100,8 +98,4 @@ export const StyledPlanetOverlayTexture = styled.div`
   ${overlay};
   mix-blend-mode: initial;
   background-color: ${({ planetTexture }) => planetTexture};
-=======
-
-  background-color: ${({ color }) => color};
->>>>>>> e7079fd47f57f367862b8828af0d8fb023b17de4
 `;
