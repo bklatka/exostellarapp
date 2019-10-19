@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import AppLayout from "../components/AppLayout/AppLayout";
@@ -9,6 +9,7 @@ import { getCurrentSystemStar } from "../store/currentSystem/currentSystem.selec
 const StarView = props => {
   const starData = useSelector(getStarFormData);
   const currentSystemStar = useSelector(getCurrentSystemStar);
+
   return (
     <AppLayout>
       <StarForm star={starData} currentSystemStar={currentSystemStar} />
