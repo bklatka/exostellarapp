@@ -13,7 +13,7 @@ const PlanetsInOrbit = props => {
     <StyledPlanetDeck>
       {planets.map(planet => (
         <SinglePlanetWrapper key={planet.name}>
-          <PlanetInDeck planet={planet} />
+          <PlanetInDeck planet={planet} editable />
         </SinglePlanetWrapper>
       ))}
     </StyledPlanetDeck>
