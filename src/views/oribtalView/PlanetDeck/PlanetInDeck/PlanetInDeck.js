@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
   StyledPlanetActions as Actions,
@@ -8,14 +8,30 @@ import {
   StyledPlanetInfo as Info
 } from "./PlanetInDeck.styles";
 import { useDispatch } from "react-redux";
-import { SET_MONITOR_STATE } from "../../../../store/orbitalView/orbitalView.actions";
+import {
+  SET_MONITOR_STATE,
+  SET_PLANET_IN_HAND
+} from "../../../../store/orbitalView/orbitalView.actions";
 import { MONITOR_STATE } from "../../../../store/orbitalView/orbitalView.reducer";
+import { Redirect } from "react-router-dom";
 
 const PlanetInDeck = ({ planet }) => {
   const dispatch = useDispatch();
-  const setOrbitInSelectingMode = () => {
-    dispatch({ type: SET_MONITOR_STATE, payload: MONITOR_STATE.SELECTING });
+  const [redirect, setRedirect] = useState();
+
+  const handleEdit = () => {
+    setRedirect(`/planer/${planet.name}`);
   };
+
+  const setOrbitInSelectingMode = () => {
+    dispatch({ type: SET_MONITOR_STATE, payload: MONITOR_STATE.ZOOMED });
+    dispatch({ type: SET_PLANET_IN_HAND, payload: planet });
+  };
+
+  if (redirect) {
+    return <Redirect to={redirect} push />;
+  }
+
   return (
     <Wrapper>
       <Image imgUrl={planet.imgUrl} />
@@ -27,7 +43,7 @@ const PlanetInDeck = ({ planet }) => {
         </Info>
         <Actions>
           <button onClick={setOrbitInSelectingMode}>Send to orbit</button>
-          <button>edit</button>
+          <button onClick={handleEdit}>edit</button>
         </Actions>
       </Content>
     </Wrapper>

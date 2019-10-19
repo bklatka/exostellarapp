@@ -1,1 +1,3 @@
 export const SET_MONITOR_STATE = "SET_MONITOR_STATE";
+
+export const SET_PLANET_IN_HAND = "SET_PLANET_IN_HAND";

@@ -10,13 +10,15 @@ export const StyledPlanetDeck = styled.ul`
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  margin-bottom: 0;
+  transition: all 1.2s ease-out;
   &:after {
     content: "Please select your orbit";
-    position: absolute;
-    bottom: 100%;
+    position: fixed;
+    bottom: -40px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 40px;
     opacity: 0;
     background-color: #3f3f3f;
     color: #fff;
@@ -32,10 +34,18 @@ export const StyledPlanetDeck = styled.ul`
         opacity: 1;
       `}
   }
+  ${({ showInfo }) =>
+    showInfo &&
+    css`
+      ${SinglePlanetWrapper} {
+        opacity: 0.6;
+      }
+    `}
   ${SinglePlanetWrapper} {
     width: 50%;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    transition: all 1.2s ease-out;
     &:nth-child(even) {
       padding-left: 1rem;
     }
@@ -43,19 +53,4 @@ export const StyledPlanetDeck = styled.ul`
       padding-right: 1rem;
     }
   }
-`;
-
-export const StyledSelectingInfo = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  opacity: 0;
 `;
