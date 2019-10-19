@@ -2,10 +2,9 @@ import React from "react";
 import { createStore } from "redux";
 import rootReducer from "./store/reducers";
 import { Provider } from "react-redux";
-import TestComponent from "./components/testComponent/testComponent";
 import "./styles/main.scss";
-import PlanetTemperature from "./components/planetTemperature/planetTemperature";
-import AppLayout from "./components/AppLayout/AppLayout";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
+import OrbitalView from "./views/orbitalView";
 
 const store = createStore(
   rootReducer,
@@ -15,11 +14,10 @@ const store = createStore(
 function App() {
   return (
     <Provider store={store}>
-      <AppLayout>
-        <h1>Hello</h1>
-        <PlanetTemperature />
-        <TestComponent />
-      </AppLayout>
+      <Router>
+        <Route path="/" component={() => <Redirect to={"/orbit"} />} />
+        <Route path="/orbit" component={OrbitalView} />
+      </Router>
     </Provider>
   );
 }
