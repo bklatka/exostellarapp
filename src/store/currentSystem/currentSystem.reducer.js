@@ -1,4 +1,5 @@
 import {
+  ADD_STAR_TO_SYSTEM,
   ASSIGN_PLANET_TO_ORBIT,
   UNASSIGN_PLANET_FROM_ORBIG
 } from "./currentSystem.actions";
@@ -31,7 +32,7 @@ const mockPlanets = [
 
 const initialState = {
   planets: mockPlanets,
-  star: {},
+  star: null,
   orbits: [4, 8, 16, 32]
 };
 
@@ -64,7 +65,8 @@ export const currentSystemReducer = (state = initialState, action = {}) => {
       });
       return { ...state, planets };
     }
-
+    case ADD_STAR_TO_SYSTEM:
+      return { ...state, star: { ...action.payload } };
     default:
       return state;
   }

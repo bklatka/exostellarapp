@@ -12,14 +12,14 @@ import {
   STARS_TEMPERATURE_RANGE
 } from "../../starSettings";
 import {
-  ADD_STAR_TO_SYSTEM,
   SET_STAR_NAME,
   SET_STAR_SIZE,
   SET_STAR_TEMPERATURE,
   SET_STAR_TYPE
 } from "../../store/star/star.actions";
+import { ADD_STAR_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
 
-const StarForm = ({ star }) => {
+const StarForm = ({ star, currentSystemStar }) => {
   const starTypes = getStarTypes();
   const starMassRange = STARS_MASS_RANGE[star.type];
   const starMass = calculateStarMassValueFromPercent(
@@ -87,7 +87,7 @@ const StarForm = ({ star }) => {
         onChange={handleStarTemperatureChange}
       />
       <Button type="submit" onClick={addStarToSystem}>
-        Add star
+        {currentSystemStar === null ? "ADD" : "UPDATE"} STAR
       </Button>
     </div>
   );

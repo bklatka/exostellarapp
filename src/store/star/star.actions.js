@@ -3,5 +3,3 @@ export const SET_STAR_NAME = "SET_STAR_NAME";
 export const SET_STAR_TYPE = "SET_STAR_TYPE";
 export const SET_STAR_SIZE = "SET_STAR_SIZE";
 export const SET_STAR_TEMPERATURE = "SET_STAR_TEMPERATURE";
-
-export const ADD_STAR_TO_SYSTEM = "SET_STAR_TEMPERATURE";

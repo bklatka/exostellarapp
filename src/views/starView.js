@@ -4,13 +4,14 @@ import { useSelector } from "react-redux";
 import AppLayout from "../components/AppLayout/AppLayout";
 import StarForm from "../components/star/starForm";
 import { getStarFormData } from "../store/star/star.selectors";
+import { getCurrentSystemStar } from "../store/currentSystem/currentSystem.selectors";
 
 const StarView = props => {
   const starData = useSelector(getStarFormData);
+  const currentSystemStar = useSelector(getCurrentSystemStar);
   return (
     <AppLayout>
-      <h1>Star form {JSON.stringify(starData)}</h1>
-      <StarForm star={starData} />
+      <StarForm star={starData} currentSystemStar={currentSystemStar} />
     </AppLayout>
   );
 };
