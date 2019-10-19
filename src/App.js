@@ -4,7 +4,7 @@ import rootReducer from "./store";
 import { Provider } from "react-redux";
 import "./styles/main.scss";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
-import OrbitalView from "./views/orbitalView";
+import OrbitalView from "./views/oribtalView/orbitalView";
 
 const store = createStore(
   rootReducer,

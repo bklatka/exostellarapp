@@ -1,0 +1,19 @@
+
+.planet-deck {
+  display:flex;
+  align-items: stretch;
+  border: 1px solid #3f3f3f;
+  border-radius:3px;
+
+  ul {
+    flex:1;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:0 2rem;
+  }
+
+  .planet-in-deck {
+    margin:0 1rem;
+  }
+}

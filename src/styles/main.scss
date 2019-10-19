@@ -1,4 +1,10 @@
+@import 'reset.css';
 @import '~antd/dist/antd.css';
 
 @import './variables';
+@import 'global';
 @import '../components/AppLayout/MainHeader/mainHeader';
+@import '../views/oribtalView/PlanetDeck/PlanetDeck';
+@import '../views/oribtalView/PlanetDeck/PlanetInDeck/PlanetInDeck';
+@import '../views/oribtalView/PlanetDeck/AddPlanetBtn/AddPlanetBtn';
+@import '../views/oribtalView/PlanetDeck/EmptyDockSpace/EmptyDockSpace';

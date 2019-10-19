@@ -1,9 +1,9 @@
 import React from "react";
 import MainHeader from "./MainHeader/MainHeader";
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children, ...restProps }) => {
   return (
-    <div>
+    <div {...restProps}>
       <MainHeader />
       {children}
     </div>
