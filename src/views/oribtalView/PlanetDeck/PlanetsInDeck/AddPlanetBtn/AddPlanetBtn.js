@@ -12,7 +12,12 @@ const AddPlanetBtn = () => {
     return <Redirect to={redirect} push />;
   }
 
-  return <StyledAddBtn onClick={redirectToNewPlanetPage}>+</StyledAddBtn>;
+  return (
+    <StyledAddBtn onClick={redirectToNewPlanetPage}>
+      <span>+</span>
+      <span>Create new planet</span>
+    </StyledAddBtn>
+  );
 };
 
 export default AddPlanetBtn;

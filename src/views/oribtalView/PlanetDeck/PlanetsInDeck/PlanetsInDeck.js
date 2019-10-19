@@ -12,14 +12,14 @@ const PlanetsInDeck = () => {
   const monitorState = useSelector(getMonitorState);
   return (
     <StyledPlanetDeck showInfo={monitorState === MONITOR_STATE.ZOOMED}>
+      <SinglePlanetWrapper>
+        <AddPlanetBtn />
+      </SinglePlanetWrapper>
       {planets.map(planet => (
         <SinglePlanetWrapper key={planet.name}>
           <PlanetInDeck planet={planet} />
         </SinglePlanetWrapper>
       ))}
-      <SinglePlanetWrapper>
-        <AddPlanetBtn />
-      </SinglePlanetWrapper>
     </StyledPlanetDeck>
   );
 };

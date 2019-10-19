@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
+  DualInfo,
+  DualInfoBlock,
+  DualInfoLabel,
   StyledPlanetActions as Actions,
   StyledPlanetContent as Content,
-  StyledPlanetIcon as Image,
+  StyledPlanetImage,
   StyledPlanetInDeck as Wrapper,
-  StyledPlanetInfo as Info
+  StyledPlanetInfo as Info,
+  StyledPlanetName
 } from "./PlanetInDeck.styles";
 import { useDispatch } from "react-redux";
 import {
@@ -14,10 +18,11 @@ import {
 } from "../../../../../store/orbitalView/orbitalView.actions";
 import { MONITOR_STATE } from "../../../../../store/orbitalView/orbitalView.reducer";
 import { Redirect } from "react-router-dom";
-import {
-  REMOVE_PLANET_FROM_SYSTEM,
-  UNASSIGN_PLANET_FROM_ORBIG
-} from "../../../../../store/currentSystem/currentSystem.actions";
+import { UNASSIGN_PLANET_FROM_ORBIG, UNASSIGN_PLANET_FROM_ORBIG } from "../../../../../store/currentSystem/currentSystem.actions";
+import { EDIT_PLANET } from "../../../../../store/planet/planet.actions";
+import VisualPlanet from "../../../SystemMonitor/Planet/VisualPlanet";
+import { BorderButton } from "../../../../../components/BorderedButton/BorderedButton";
+import { ColorBtn } from "../../../../../components/ColorBtn/ColorBtn.styled";
 
 const PlanetInDeck = ({ planet, editable }) => {
   const dispatch = useDispatch();
@@ -46,22 +51,37 @@ const PlanetInDeck = ({ planet, editable }) => {
 
   return (
     <Wrapper>
-      <Image imgUrl={planet.planetThumbnailUrl} />
+      <StyledPlanetImage>
+        <VisualPlanet planet={planet} />
+      </StyledPlanetImage>
 
       <Content>
         <Info>
-          <p>Name: {planet.name}</p>
-          <p>Mass: {planet.mass}</p>
+          <StyledPlanetName>{planet.name}</StyledPlanetName>
+          <p>{planet.type}</p>
         </Info>
+
+        <DualInfo>
+          <DualInfoBlock>
+            <DualInfoLabel>Mass</DualInfoLabel>
+            <span>{planet.mass}</span>
+          </DualInfoBlock>
+          <DualInfoBlock>
+            <DualInfoLabel>Atmosphere</DualInfoLabel>
+            <span>{planet.mass}</span>
+          </DualInfoBlock>
+        </DualInfo>
+
         <Actions>
           {!editable && (
-            <button onClick={setOrbitInSelectingMode}>Send to orbit</button>
+            <ColorBtn onClick={setOrbitInSelectingMode}>Send to orbit</ColorBtn>
           )}
           {editable && (
-            <button onClick={removeFromOrbit}>Remove from orbit</button>
+            <ColorBtn onClick={removeFromOrbit}>Remove from orbit</ColorBtn>
           )}
-          <button onClick={handleEdit}>edit</button>
-          <button onClick={removePlanetFromSystem}>remove</button>
+          <BorderButton onClick={handleEdit}>edit</BorderButton>
+        <button onClick={removePlanetFromSystem}>remove</button>
+
         </Actions>
       </Content>
     </Wrapper>
