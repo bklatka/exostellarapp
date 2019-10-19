@@ -1,3 +1,4 @@
+export const getCurrentSystem = state => state.currentSystem;
 export const getCurrentSystemPlanets = state => state.currentSystem.planets;
 
 export const getUnselectedPlanets = state =>
