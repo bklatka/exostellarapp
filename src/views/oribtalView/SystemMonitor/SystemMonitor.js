@@ -2,6 +2,7 @@ import React from "react";
 import Orbit from "./Orbit/Orbit";
 import Planet from "./Planet/Planet";
 import {
+  StyledStar,
   StyledSystemMonitor,
   StyledSystemMonitorWrapper
 } from "./SystemMonitor.styles";
@@ -26,6 +27,7 @@ const SystemMonitor = () => {
           <Planet planet={planet} />
         ))}
       </StyledSystemMonitor>
+      <StyledStar to={"/star"} />
     </StyledSystemMonitorWrapper>
   );
 };

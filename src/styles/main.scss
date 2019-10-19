@@ -3,6 +3,7 @@
 
 @import './variables';
 @import 'global';
+@import "overrides";
 @import '../components/AppLayout/MainHeader/mainHeader';
 @import '../views/oribtalView/PlanetDeck/PlanetsInDeck/AddPlanetBtn/AddPlanetBtn';
 @import '../views/oribtalView/PlanetDeck/PlanetsInDeck/EmptyDockSpace/EmptyDockSpace';

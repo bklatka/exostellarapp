@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:300,400,500,700&display=swap');
+
 
 * {
   box-sizing: border-box;
+  font-family: 'Exo 2', sans-serif;
 }
 
 .orbital-view {
@@ -10,3 +13,8 @@
 .ant-tabs {
   width:100%;
 }
+
+body {
+  background-color: #212121;
+}
+

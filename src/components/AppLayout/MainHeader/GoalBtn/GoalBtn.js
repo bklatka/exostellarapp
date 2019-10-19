@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Badge, Button, Drawer } from "antd";
+import { Badge, Drawer } from "antd";
 import Missions from "./Missions/Missions";
 import { useSelector } from "react-redux";
 import { getUnfilledMissions } from "../../../../store/currentMission/currentMission.selectors";
+import { BorderButton } from "../../../BorderedButton/BorderedButton";
 
 const GoalBtn = props => {
   const missions = useSelector(getUnfilledMissions);
@@ -14,9 +15,7 @@ const GoalBtn = props => {
   return (
     <div>
       <Badge count={missions.length}>
-        <Button type="primary" onClick={open}>
-          Goals
-        </Button>
+        <BorderButton onClick={open}>Missions</BorderButton>
       </Badge>
       <Drawer
         width={"100%"}

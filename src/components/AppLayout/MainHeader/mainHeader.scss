@@ -7,3 +7,17 @@
   justify-content: space-between;
   width:100%;
 }
+
+
+.app-title {
+  position:absolute;
+  width:100%;
+  color:#fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-align: center;
+  font-style:italic;
+  opacity:.8;
+  z-index:-1;
+}

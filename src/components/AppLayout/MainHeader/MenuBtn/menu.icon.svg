@@ -1,0 +1,12 @@
+<svg id="hamburger_menu" data-name="hamburger menu" xmlns="http://www.w3.org/2000/svg" width="77.5" height="45.5" viewBox="0 0 77.5 45.5">
+    <defs>
+        <style>
+            .cls-1 {
+            fill: #fff;
+            }
+        </style>
+    </defs>
+    <path id="Prostokąt_zaokrąglony_1" data-name="Prostokąt zaokrąglony 1" class="cls-1" d="M1.492,0H76a1.5,1.5,0,0,1,1.5,1.5V2.487A6.513,6.513,0,0,1,70.987,9H1.492A1.492,1.492,0,0,1,0,7.508V1.492A1.492,1.492,0,0,1,1.492,0Z"/>
+    <path id="Prostokąt_zaokrąglony_1_kopia" data-name="Prostokąt zaokrąglony 1 kopia" class="cls-1" d="M1.492,17.5H61.125a1.5,1.5,0,0,1,1.5,1.5v0.987A6.513,6.513,0,0,1,56.112,26.5H1.492A1.492,1.492,0,0,1,0,25.008V18.992A1.492,1.492,0,0,1,1.492,17.5Z"/>
+    <path id="Prostokąt_zaokrąglony_1_kopia_2" data-name="Prostokąt zaokrąglony 1 kopia 2" class="cls-1" d="M1.492,36.5H46.656a1.5,1.5,0,0,1,1.5,1.5v0.987A6.513,6.513,0,0,1,41.644,45.5H1.492A1.492,1.492,0,0,1,0,44.008V37.992A1.492,1.492,0,0,1,1.492,36.5Z"/>
+</svg>
