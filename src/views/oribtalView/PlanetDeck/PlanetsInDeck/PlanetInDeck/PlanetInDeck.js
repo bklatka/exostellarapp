@@ -34,7 +34,7 @@ const PlanetInDeck = ({ planet }) => {
 
   return (
     <Wrapper>
-      <Image imgUrl={planet.imgUrl} />
+      <Image imgUrl={planet.planetThumbnailUrl} />
 
       <Content>
         <Info>
@@ -54,7 +54,7 @@ PlanetInDeck.propTypes = {
   planet: PropTypes.shape({
     name: PropTypes.string.isRequired,
     mass: PropTypes.number.isRequired,
-    imgUrl: PropTypes.string.isRequired
+    planetThumbnailUrl: PropTypes.string.isRequired
   })
 };
 
