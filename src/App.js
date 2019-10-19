@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import TestComponent from "./components/testComponent/testComponent";
 import "./styles/main.scss";
 import PlanetTemperature from "./components/planetTemperature/planetTemperature";
+import AppLayout from "./components/AppLayout/AppLayout";
 
 const store = createStore(
   rootReducer,
@@ -14,11 +15,11 @@ const store = createStore(
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
+      <AppLayout>
         <h1>Hello</h1>
         <PlanetTemperature />
         <TestComponent />
-      </div>
+      </AppLayout>
     </Provider>
   );
 }
