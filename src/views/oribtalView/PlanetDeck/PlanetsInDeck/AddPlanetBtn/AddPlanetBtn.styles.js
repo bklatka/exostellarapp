@@ -11,5 +11,5 @@ export const StyledAddBtn = styled.button`
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  width: 200px;
+  width: 100%;
 `;
