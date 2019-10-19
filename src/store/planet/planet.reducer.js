@@ -1,4 +1,5 @@
 import {
+  CLEAR_PLANET_FORM,
   SET_PLANET_HUE_COLOR,
   SET_PLANET_NAME,
   SET_PLANET_SIZE,
@@ -28,6 +29,8 @@ export const planetFormReducer = (state = initialState, action = {}) => {
       return { ...state, temperatureAdjustment: action.payload };
     case SET_PLANET_HUE_COLOR:
       return { ...state, hueColor: action.payload };
+    case CLEAR_PLANET_FORM:
+      return { ...initialState };
     default:
       return state;
   }
