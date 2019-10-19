@@ -9,7 +9,7 @@ import { getStarTypes } from "../../starSettings";
 const initialState = {
   name: "",
   type: getStarTypes()[0],
-  sizePercent: 0,
+  sizePercent: 50,
   temperaturePercent: 50
 };
 

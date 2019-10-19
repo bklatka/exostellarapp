@@ -12,7 +12,7 @@ const initialState = {
   id: null,
   name: "",
   type: getPlanetTypes()[0],
-  sizePercent: 0,
+  sizePercent: 50,
   temperatureAdjustment: 50,
   hueColor: "#00ffd8"
 };
