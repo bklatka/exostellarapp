@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Input, Slider } from "antd";
 
@@ -18,8 +18,11 @@ import {
   SET_STAR_TYPE
 } from "../../store/star/star.actions";
 import { ADD_STAR_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
+import { Redirect } from "react-router-dom";
 
 const StarForm = ({ star, currentSystemStar }) => {
+  const [redirect, setRedirect] = useState();
+
   const starTypes = getStarTypes();
   const starMassRange = STARS_MASS_RANGE[star.type];
   const starMass = calculateStarMassValueFromPercent(
@@ -69,7 +72,12 @@ const StarForm = ({ star, currentSystemStar }) => {
       temperature: starTemp
     };
     dispatch({ type: ADD_STAR_TO_SYSTEM, payload: { ...starToSystem } });
+    setRedirect(`/orbit`);
   };
+
+  if (redirect) {
+    return <Redirect to={redirect} push />;
+  }
 
   return (
     <div>

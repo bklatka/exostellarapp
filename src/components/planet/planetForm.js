@@ -6,6 +6,7 @@ import nanoid from "nanoid";
 
 import {
   CLEAR_PLANET_FORM,
+  EDIT_PLANET,
   SET_PLANET_HUE_COLOR,
   SET_PLANET_NAME,
   SET_PLANET_SIZE,
@@ -20,6 +21,7 @@ import {
 } from "../../planetSettings";
 import { ADD_PLANET_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
 import { Redirect } from "react-router-dom";
+import { isNil } from "ramda";
 
 const PlanetForm = ({ planet }) => {
   const [redirect, setRedirect] = useState();
@@ -110,7 +112,7 @@ const PlanetForm = ({ planet }) => {
       <h3>Hue picker</h3>
       <HuePicker color={planet.hueColor} onChange={handleHuePickerChange} />
       <Button type="submit" onClick={addPlanetToSystem}>
-        Add planet
+        {isNil(planet.id) ? "ADD" : "UPDATE"} PLANET
       </Button>
     </div>
   );

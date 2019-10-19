@@ -8,3 +8,6 @@ export const getSelectedPlanets = state =>
 export const getCurrentSystemOrbits = state => state.currentSystem.orbits;
 
 export const getCurrentSystemStar = state => state.currentSystem.star;
+
+export const getCurrentSystemPlanet = planetId => state =>
+  state.currentSystem.planets.find(planet => planet.id === planetId);
