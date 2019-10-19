@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components/macro";
 
-export const SinglePlanetWrapper = styled.li``;
+export const SinglePlanetWrapper = styled.div``;
 
-export const StyledPlanetDeck = styled.ul`
+export const StyledPlanetDeck = styled.div`
   flex: 1;
   overflow: auto;
   width: 100%;
