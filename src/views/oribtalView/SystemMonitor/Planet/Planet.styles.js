@@ -17,6 +17,18 @@ const rotate = keyframes`
   }
 `;
 
+export const StyledPlanetTemp = styled.p`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #3f3f3f;
+  color: #fff;
+  padding: 0.5rem;
+  opacity: 0;
+  animation: 5s ${rotate} linear infinite reverse;
+  transition: all 0.2s ease-out;
+`;
+
 export const StyledPlanetWrapper = styled.div`
   width: ${({ orbitSize }) => orbitSize * ORBIT_MULTIPLIER + SUN_SIZE}px;
   height: ${({ orbitSize }) => orbitSize * ORBIT_MULTIPLIER + SUN_SIZE}px;
@@ -33,8 +45,12 @@ export const StyledPlanetWrapper = styled.div`
   transform-origin: center center;
   transform: translateX(-50%) translateY(-50%) rotate(90deg);
   animation: 5s ${rotate} linear infinite;
+  &:hover {
+    ${StyledPlanetTemp} {
+      opacity: 1;
+    }
+  }
 `;
-
 export const StyledPlanet = styled.div`
   width: 10px;
   height: 10px;

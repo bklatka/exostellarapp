@@ -17,11 +17,13 @@ const Missions = props => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    goals.forEach(goal => {
-      if (isGoalFulfilled(goal, currentSystem)) {
-        dispatch({ type: GOAL_FULFILLED, payload: goal });
-      }
-    });
+    goals
+      .filter(goal => !goal.fullfilled)
+      .forEach(goal => {
+        if (isGoalFulfilled(goal, currentSystem)) {
+          dispatch({ type: GOAL_FULFILLED, payload: goal });
+        }
+      });
   }, [planets, goals, currentSystem, dispatch]);
   return (
     <div>
@@ -29,7 +31,7 @@ const Missions = props => {
         <Alert
           message={goal.title}
           description={goal.description}
-          type={goal.fulfilled ? "success" : "warning"}
+          type={goal.fullfilled ? "success" : "warning"}
           showIcon
         />
       ))}

@@ -23,7 +23,7 @@ const SystemMonitor = () => {
           <Orbit orbitSize={orbit} key={orbit} />
         ))}
         {planetsOnOrbits.map(planet => (
-          <Planet orbitSize={planet.orbit} />
+          <Planet planet={planet} />
         ))}
       </StyledSystemMonitor>
     </StyledSystemMonitorWrapper>

@@ -33,7 +33,9 @@ const mockPlanets = [
 
 const initialState = {
   planets: [],
-  star: null,
+  star: {
+    mass: 1
+  },
   orbits: [4, 8, 16, 32]
 };
 

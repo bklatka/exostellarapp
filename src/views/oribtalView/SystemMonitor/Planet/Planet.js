@@ -2,12 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   StyledPlanet,
-  StyledPlanetWrapper,
   StyledPlanetOverlayAtmosphereColor,
-  StyledPlanetOverlayTemperatureAdjustment,
   StyledPlanetOverlayStarShading,
-  StyledPlanetOverlayTexture
+  StyledPlanetOverlayTemperatureAdjustment,
+  StyledPlanetOverlayTexture,
+  StyledPlanetTemp,
+  StyledPlanetWrapper
 } from "./Planet.styles";
+import { getPlanetTemperature } from "../../../../utils/temperature";
+import { useSelector } from "react-redux";
+import { getCurrentSystemStar } from "../../../../store/currentSystem/currentSystem.selectors";
 
 const atmosphereHue = "yellow";
 const temperatureIntensity = "80";
@@ -16,10 +20,13 @@ const starShading =
 const planetTexture = "transparent";
 const planetType = "gas";
 
-const Planet = ({ orbitSize }) => {
+const Planet = ({ planet }) => {
+  const star = useSelector(getCurrentSystemStar);
+  const planetTemp = getPlanetTemperature(planet, { mass: 1 });
   return (
-    <StyledPlanetWrapper orbitSize={orbitSize}>
+    <StyledPlanetWrapper orbitSize={planet.orbit}>
       <StyledPlanet planetType={planetType}>
+        <StyledPlanetTemp>Temp: {planetTemp}°C</StyledPlanetTemp>
         <StyledPlanetOverlayAtmosphereColor atmosphereHue={atmosphereHue} />
         <StyledPlanetOverlayTemperatureAdjustment
           temperatureIntensity={temperatureIntensity}
@@ -32,7 +39,12 @@ const Planet = ({ orbitSize }) => {
 };
 
 Planet.propTypes = {
-  orbitSize: PropTypes.number.isRequired
+  planet: PropTypes.shape({
+    mass: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    sizePercent: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default Planet;

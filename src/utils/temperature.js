@@ -20,3 +20,12 @@ export const calculateTemperature = (
 export const kelvinToCelcius = kelvinTemp => kelvinTemp - 273;
 export const kelvinToFarenheit = kelvinTemp =>
   Math.round((9 * (kelvinTemp - 273)) / 5 + 32);
+
+// returns value in AU
+export const calculatePlanetDistance = fromOrbit => fromOrbit / 4;
+
+export const getPlanetTemperature = (planet, star) => {
+  const distanceFromStar = calculatePlanetDistance(planet.orbit);
+  // TODO: map bondAlbedo and greenhgouse effect
+  return calculateTemperature(star.mass, distanceFromStar, 0.29, 1);
+};

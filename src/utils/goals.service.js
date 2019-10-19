@@ -1,16 +1,7 @@
-import { calculateTemperature, kelvinToCelcius } from "./temperature";
+import { getPlanetTemperature, kelvinToCelcius } from "./temperature";
 
 export const VALIDATION_TYPES = {
   PLANET_TEMP: "atLeastOnePlanetTemp"
-};
-
-// returns value in AU
-const calculatePlanetDistance = fromOrbit => fromOrbit / 4;
-
-const getPlanetTemperature = (planet, star) => {
-  const distanceFromStar = calculatePlanetDistance(planet.orbit);
-  // TODO: map bondAlbedo and greenhgouse effect
-  return calculateTemperature(star.mass, distanceFromStar, 0.29, 1);
 };
 
 const hasPlanetWithMinTemp = (minTempValue, currentSystem) => {
@@ -32,7 +23,7 @@ const getValidatorExecutor = validator => system =>
   validatorsMap[validator.type](validator.value, system);
 
 export const isGoalFulfilled = (goal, currentSystem) => {
-  return !goal.validators.find(validator => {
+  return !goal.validation.find(validator => {
     const validatorExec = getValidatorExecutor(validator);
     return !validatorExec(currentSystem);
   });
