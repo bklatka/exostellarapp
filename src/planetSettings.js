@@ -24,7 +24,12 @@ export const calculatePlanetMassValueFromPercent = (
   planetType,
   sizePercentage
 ) =>
-  (sizePercentage *
-    (PLANETS_MASS_RANGE[planetType].max - PLANETS_MASS_RANGE[planetType].min)) /
-    100 +
-  PLANETS_MASS_RANGE[planetType].min;
+  parseFloat(
+    (
+      (sizePercentage *
+        (PLANETS_MASS_RANGE[planetType].max -
+          PLANETS_MASS_RANGE[planetType].min)) /
+        100 +
+      PLANETS_MASS_RANGE[planetType].min
+    ).toFixed(2)
+  );

@@ -8,7 +8,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import "./styles/main.scss";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
-import PlanetView from "./views/planetView";
+import { EditPlanetView, NewPlanetView } from "./views/planetView";
 import OrbitalView from "./views/oribtalView/orbitalView";
 import StarView from "./views/starView";
 
@@ -32,7 +32,8 @@ function App() {
       <PersistGate persistor={persistor} loading={null}>
         <Router>
           <Route path="/orbit" component={OrbitalView} />
-          <Route path="/planet/:id?" component={PlanetView} />
+          <Route exact path="/planet" component={NewPlanetView} />
+          <Route exact path="/planet/:id" component={EditPlanetView} />
           <Route path="/star" component={StarView} />
           <Route exact path="/" component={() => <Redirect to={"/orbit"} />} />
         </Router>
