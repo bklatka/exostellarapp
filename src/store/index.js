@@ -5,7 +5,7 @@ import { orbitalViewReducer } from "./orbitalView/orbitalView.reducer";
 import { currentSystemReducer } from "./currentSystem/currentSystem.reducer";
 
 export default combineReducers({
-  star: starReducer,
+  starForm: starReducer,
   planetForm: planetFormReducer,
   orbitalView: orbitalViewReducer,
   currentSystem: currentSystemReducer

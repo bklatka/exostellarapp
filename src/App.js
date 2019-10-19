@@ -6,6 +6,7 @@ import "./styles/main.scss";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import PlanetView from "./views/planetView";
 import OrbitalView from "./views/oribtalView/orbitalView";
+import StarView from "./views/starView";
 
 const store = createStore(
   rootReducer,
@@ -18,6 +19,7 @@ function App() {
       <Router>
         <Route path="/orbit" component={OrbitalView} />
         <Route path="/planet/:id?" component={PlanetView} />
+        <Route path="/star" component={StarView} />
         <Route exact path="/" component={() => <Redirect to={"/orbit"} />} />
       </Router>
     </Provider>
