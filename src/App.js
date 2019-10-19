@@ -4,6 +4,7 @@ import rootReducer from "./store/reducers";
 import { Provider } from "react-redux";
 import TestComponent from "./components/testComponent/testComponent";
 import "./styles/main.scss";
+import PlanetTemperature from "./components/planetTemperature/planetTemperature";
 
 const store = createStore(
   rootReducer,
@@ -15,6 +16,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <h1>Hello</h1>
+        <PlanetTemperature />
         <TestComponent />
       </div>
     </Provider>
