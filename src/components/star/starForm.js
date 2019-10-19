@@ -54,7 +54,21 @@ const StarForm = ({ star, currentSystemStar }) => {
   };
 
   const addStarToSystem = () => {
-    dispatch({ type: ADD_STAR_TO_SYSTEM, payload: { ...star } });
+    const starMass = calculateStarMassValueFromPercent(
+      star.type,
+      star.sizePercent
+    );
+    const starTemp = calculateStarTempValueFromPercent(
+      star.type,
+      star.temperaturePercent
+    );
+    const starToSystem = {
+      name: star.name,
+      type: star.type,
+      mass: starMass,
+      temperature: starTemp
+    };
+    dispatch({ type: ADD_STAR_TO_SYSTEM, payload: { ...starToSystem } });
   };
 
   return (
