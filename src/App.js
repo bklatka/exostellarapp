@@ -13,6 +13,8 @@ import OrbitalView from "./views/oribtalView/orbitalView";
 import StarView from "./views/starView";
 import CongratsView from "./views/CongratsView/CongratsView";
 
+import "./styles.css";
+
 const persistConfig = {
   key: "root",
   storage,

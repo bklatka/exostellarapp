@@ -53,6 +53,7 @@ const Modal = props => {
         <BorderButton onClick={open}>Missions</BorderButton>
       </Badge>
       <Drawer
+        drawerStyle={{ backgroundColor: "#212121" }}
         width={"100%"}
         title={TYPES_OF_VIEW_MODAL_TITLE[typeOfViewModal]}
         placement="right"
