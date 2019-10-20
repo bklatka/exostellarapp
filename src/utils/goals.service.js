@@ -1,7 +1,8 @@
 import { getPlanetTemperature, kelvinToCelcius } from "./temperature";
 
 export const VALIDATION_TYPES = {
-  PLANET_TEMP: "atLeastOnePlanetTemp"
+  PLANET_TEMP: "atLeastOnePlanetTemp",
+  PLANET_MAX_TEMP: "atLeastOnePlanetMinTemp"
 };
 
 const hasPlanetWithMinTemp = (minTempValue, currentSystem) => {
@@ -15,8 +16,20 @@ const hasPlanetWithMinTemp = (minTempValue, currentSystem) => {
     });
 };
 
+const hasPlanetWithMaxTemp = (maxTempValue, currentSystem) => {
+  const { planets, star } = currentSystem;
+
+  return !!planets
+    .filter(planet => planet.orbit)
+    .find(planet => {
+      const tempOnPlanet = kelvinToCelcius(getPlanetTemperature(planet, star));
+      return tempOnPlanet <= maxTempValue;
+    });
+};
+
 const validatorsMap = {
-  [VALIDATION_TYPES.PLANET_TEMP]: hasPlanetWithMinTemp
+  [VALIDATION_TYPES.PLANET_TEMP]: hasPlanetWithMinTemp,
+  [VALIDATION_TYPES.PLANET_MAX_TEMP]: hasPlanetWithMaxTemp
 };
 
 const getValidatorExecutor = validator => system =>

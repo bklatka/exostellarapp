@@ -39,6 +39,7 @@ const Missions = props => {
     <div>
       {goals.map(goal => (
         <Alert
+          style={{ marginBottom: "1rem" }}
           message={goal.title}
           description={goal.description}
           type={goal.fullfilled ? "success" : "warning"}

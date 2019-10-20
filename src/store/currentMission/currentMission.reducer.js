@@ -8,9 +8,17 @@ import {
 const mockGoals = [
   {
     id: 1,
-    title: "Temp goal",
+    title: "Earth like",
     description: "Set temperature on at least one planet to min. 14C degrees",
-    validation: [{ type: VALIDATION_TYPES.PLANET_TEMP, value: 10 }],
+    validation: [{ type: VALIDATION_TYPES.PLANET_TEMP, value: 14 }],
+    fulfilled: false
+  },
+  {
+    id: 2,
+    title: "Brace yourself!",
+    description:
+      "Set temperature on at least one planet to no more then -20 degrees",
+    validation: [{ type: VALIDATION_TYPES.PLANET_MAX_TEMP, value: -20 }],
     fulfilled: false
   }
 ];
