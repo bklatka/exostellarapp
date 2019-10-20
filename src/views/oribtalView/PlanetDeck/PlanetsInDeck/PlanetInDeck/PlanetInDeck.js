@@ -28,6 +28,7 @@ import {
 } from "../../../../../store/modal/modal.actions";
 import { TYPES_OF_VIEW } from "../../../../../components/AppLayout/MainHeader/GoalBtn/Modal";
 import { EDIT_PLANET } from "../../../../../store/planet/planet.actions";
+import { PLANET_TYPE_NAME } from "../../../../../planetSettings";
 
 const PlanetInDeck = ({ planet, editable }) => {
   const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const PlanetInDeck = ({ planet, editable }) => {
       <Content>
         <Info>
           <StyledPlanetName>{planet.name}</StyledPlanetName>
-          <p>{planet.type}</p>
+          <p>{PLANET_TYPE_NAME[planet.type]}</p>
         </Info>
 
         <DualInfo>
