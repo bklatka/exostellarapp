@@ -18,13 +18,10 @@ import {
 } from "../../../../../store/orbitalView/orbitalView.actions";
 import { MONITOR_STATE } from "../../../../../store/orbitalView/orbitalView.reducer";
 import { Redirect } from "react-router-dom";
-import {
-  REMOVE_PLANET_FROM_SYSTEM,
-  UNASSIGN_PLANET_FROM_ORBIG
-} from "../../../../../store/currentSystem/currentSystem.actions";
 import VisualPlanet from "../../../SystemMonitor/Planet/VisualPlanet";
 import { BorderButton } from "../../../../../components/BorderedButton/BorderedButton";
 import { ColorBtn } from "../../../../../components/ColorBtn/ColorBtn.styled";
+import {UNASSIGN_PLANET_FROM_ORBIG} from "../../../../../store/currentSystem/currentSystem.actions";
 
 const PlanetInDeck = ({ planet, editable }) => {
   const dispatch = useDispatch();
@@ -45,10 +42,6 @@ const PlanetInDeck = ({ planet, editable }) => {
 
   const removeFromOrbit = () => {
     dispatch({ type: UNASSIGN_PLANET_FROM_ORBIG, payload: planet });
-  };
-
-  const removePlanetFromSystem = () => {
-    dispatch({ type: REMOVE_PLANET_FROM_SYSTEM, payload: planet.id });
   };
 
   return (
@@ -82,7 +75,6 @@ const PlanetInDeck = ({ planet, editable }) => {
             <ColorBtn onClick={removeFromOrbit}>Remove from orbit</ColorBtn>
           )}
           <BorderButton onClick={handleEdit}>edit</BorderButton>
-          <button onClick={removePlanetFromSystem}>remove</button>
         </Actions>
       </Content>
     </Wrapper>
