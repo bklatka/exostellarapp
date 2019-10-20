@@ -18,8 +18,10 @@ import {
 } from "../../../../../store/orbitalView/orbitalView.actions";
 import { MONITOR_STATE } from "../../../../../store/orbitalView/orbitalView.reducer";
 import { Redirect } from "react-router-dom";
-import { UNASSIGN_PLANET_FROM_ORBIG, UNASSIGN_PLANET_FROM_ORBIG } from "../../../../../store/currentSystem/currentSystem.actions";
-import { EDIT_PLANET } from "../../../../../store/planet/planet.actions";
+import {
+  REMOVE_PLANET_FROM_SYSTEM,
+  UNASSIGN_PLANET_FROM_ORBIG
+} from "../../../../../store/currentSystem/currentSystem.actions";
 import VisualPlanet from "../../../SystemMonitor/Planet/VisualPlanet";
 import { BorderButton } from "../../../../../components/BorderedButton/BorderedButton";
 import { ColorBtn } from "../../../../../components/ColorBtn/ColorBtn.styled";
@@ -80,8 +82,7 @@ const PlanetInDeck = ({ planet, editable }) => {
             <ColorBtn onClick={removeFromOrbit}>Remove from orbit</ColorBtn>
           )}
           <BorderButton onClick={handleEdit}>edit</BorderButton>
-        <button onClick={removePlanetFromSystem}>remove</button>
-
+          <button onClick={removePlanetFromSystem}>remove</button>
         </Actions>
       </Content>
     </Wrapper>
