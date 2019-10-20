@@ -21,6 +21,8 @@ import { ADD_STAR_TO_SYSTEM } from "../../store/currentSystem/currentSystem.acti
 import { Link, Redirect } from "react-router-dom";
 import { StyledForm, StyledFormGroup } from "../planet/PlanetForm.styled";
 import { ColorBtn } from "../ColorBtn/ColorBtn.styled";
+import TypesCarousel from "../typesCarousel";
+import { CLOSE_MODAL } from "../../store/modal/modal.actions";
 
 const StarForm = ({ star, currentSystemStar }) => {
   const [redirect, setRedirect] = useState();
@@ -75,7 +77,7 @@ const StarForm = ({ star, currentSystemStar }) => {
       temperature: starTemp
     };
     dispatch({ type: ADD_STAR_TO_SYSTEM, payload: { ...starToSystem } });
-    setRedirect(`/orbit`);
+    dispatch({ type: CLOSE_MODAL });
   };
 
   if (redirect) {

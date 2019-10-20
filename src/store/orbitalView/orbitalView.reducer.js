@@ -11,7 +11,9 @@ export const MONITOR_STATE = {
 
 export const initialState = {
   monitorState: MONITOR_STATE.NORMAL,
-  planetInHand: null
+  planetInHand: null,
+  typeOfViewModal: null,
+  isModalOpen: false
 };
 
 export const orbitalViewReducer = (state = initialState, action = {}) => {

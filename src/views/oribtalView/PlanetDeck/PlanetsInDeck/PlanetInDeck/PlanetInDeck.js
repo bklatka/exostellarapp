@@ -11,7 +11,7 @@ import {
   StyledPlanetInfo as Info,
   StyledPlanetName
 } from "./PlanetInDeck.styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   SET_MONITOR_STATE,
   SET_PLANET_IN_HAND
@@ -22,13 +22,24 @@ import { UNASSIGN_PLANET_FROM_ORBIG } from "../../../../../store/currentSystem/c
 import VisualPlanet from "../../../SystemMonitor/Planet/VisualPlanet";
 import { BorderButton } from "../../../../../components/BorderedButton/BorderedButton";
 import { ColorBtn } from "../../../../../components/ColorBtn/ColorBtn.styled";
+import {
+  OPEN_MODAL,
+  SET_TYPE_OF_VIEW_MODAL
+} from "../../../../../store/modal/modal.actions";
+import { TYPES_OF_VIEW } from "../../../../../components/AppLayout/MainHeader/GoalBtn/Modal";
+import { EDIT_PLANET } from "../../../../../store/planet/planet.actions";
 
 const PlanetInDeck = ({ planet, editable }) => {
   const dispatch = useDispatch();
   const [redirect, setRedirect] = useState();
 
-  const handleEdit = () => {
-    setRedirect(`/planet/${planet.id}`);
+  const open = () => {
+    dispatch({ type: OPEN_MODAL });
+    dispatch({
+      type: SET_TYPE_OF_VIEW_MODAL,
+      payload: TYPES_OF_VIEW.PLANET_VIEW
+    });
+    dispatch({ type: EDIT_PLANET, payload: planet });
   };
 
   const setOrbitInSelectingMode = () => {
@@ -79,7 +90,7 @@ const PlanetInDeck = ({ planet, editable }) => {
           {editable && (
             <ColorBtn onClick={removeFromOrbit}>Remove from orbit</ColorBtn>
           )}
-          <BorderButton onClick={handleEdit}>edit</BorderButton>
+          <BorderButton onClick={open}>edit</BorderButton>
         </Actions>
       </Content>
     </Wrapper>

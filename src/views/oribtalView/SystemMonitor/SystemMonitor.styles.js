@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components/macro";
 import { MONITOR_STATE } from "../../../store/orbitalView/orbitalView.reducer";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
 
 export const StyledSystemMonitor = styled.section`
   height: 250px;
@@ -28,7 +29,7 @@ export const StyledSystemMonitorWrapper = styled.section`
     `}
 `;
 
-export const StyledStar = styled(Link)`
+export const StyledStar = styled.button`
   width: 20px;
   height: 20px;
   background: yellow;

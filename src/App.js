@@ -15,7 +15,8 @@ import CongratsView from "./views/CongratsView/CongratsView";
 
 const persistConfig = {
   key: "root",
-  storage
+  storage,
+  blacklist: ["modal"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -33,9 +34,9 @@ function App() {
       <PersistGate persistor={persistor} loading={null}>
         <Router>
           <Route path="/orbit" component={OrbitalView} />
-          <Route exact path="/planet" component={NewPlanetView} />
-          <Route exact path="/planet/:id" component={EditPlanetView} />
-          <Route path="/star" component={StarView} />
+          {/*<Route exact path="/planet" component={NewPlanetView} />*/}
+          {/*<Route exact path="/planet/:id" component={EditPlanetView} />*/}
+          {/*<Route path="/star" component={StarView} />*/}
           <Route path="/congrats" component={CongratsView} />
           <Route exact path="/" component={() => <Redirect to={"/orbit"} />} />
         </Router>

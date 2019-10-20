@@ -1,12 +1,12 @@
 import React from "react";
-import GoalBtn from "./GoalBtn/GoalBtn";
+import Modal from "./GoalBtn/Modal";
 import MenuBtn from "./MenuBtn/MenuBtn";
 
 const MainHeader = props => {
   return (
     <div className="main-header">
       <MenuBtn />
-      <GoalBtn />
+      <Modal />
       {/*<p className={"app-title"}>Exostellar.app</p>*/}
     </div>
   );

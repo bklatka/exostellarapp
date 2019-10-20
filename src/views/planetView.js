@@ -3,7 +3,6 @@ import { Redirect, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { isNil } from "ramda";
 
-import AppLayout from "../components/AppLayout/AppLayout";
 import PlanetForm from "../components/planet/planetForm";
 import { getPlanetFormData } from "../store/planet/planet.selectors";
 import { getCurrentSystemPlanet } from "../store/currentSystem/currentSystem.selectors";
@@ -11,12 +10,7 @@ import { CLEAR_PLANET_FORM, EDIT_PLANET } from "../store/planet/planet.actions";
 
 const PlanetView = props => {
   const planetFormData = useSelector(getPlanetFormData);
-
-  return (
-    <AppLayout>
-      <PlanetForm planet={planetFormData} />
-    </AppLayout>
-  );
+  return <PlanetForm planet={planetFormData} />;
 };
 
 PlanetView.propTypes = {};
@@ -24,18 +18,19 @@ PlanetView.propTypes = {};
 export default PlanetView;
 
 export const NewPlanetView = () => {
-  const dispatch = useDispatch();
-  dispatch({ type: CLEAR_PLANET_FORM });
+  console.log("NewPlanetView");
+  // const dispatch = useDispatch();
+  // dispatch({ type: CLEAR_PLANET_FORM });
   return <PlanetView />;
 };
 
 export const EditPlanetView = () => {
-  const { id } = useParams();
+  console.log("EditPlanetView");
+  // const { id } = useParams();
+  const { id } = useSelector(getPlanetFormData);
   const dispatch = useDispatch();
   const planetInCurrentSystem = useSelector(getCurrentSystemPlanet(id));
 
   if (isNil(planetInCurrentSystem)) return <Redirect to={"/orbit"} />;
-  dispatch({ type: EDIT_PLANET, payload: planetInCurrentSystem });
-
   return <PlanetView />;
 };
