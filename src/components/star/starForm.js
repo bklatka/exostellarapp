@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Button, Input, Slider } from "antd";
+import { Input, Radio, Slider } from "antd";
 
 import {
   calculateStarMassPercent,
-  calculateStarTempPercent,
   calculateStarMassValueFromPercent,
+  calculateStarTempPercent,
   calculateStarTempValueFromPercent,
   getStarTypes,
   STARS_MASS_RANGE,
@@ -19,7 +19,8 @@ import {
 } from "../../store/star/star.actions";
 import { ADD_STAR_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
 import { Redirect } from "react-router-dom";
-import TypesCarousel from "../typesCarousel";
+import { StyledForm, StyledFormGroup } from "../planet/PlanetForm.styled";
+import { ColorBtn } from "../ColorBtn/ColorBtn.styled";
 
 const StarForm = ({ star, currentSystemStar }) => {
   const [redirect, setRedirect] = useState();
@@ -41,8 +42,9 @@ const StarForm = ({ star, currentSystemStar }) => {
   const handleStarNameChange = event => {
     dispatch({ type: SET_STAR_NAME, payload: event.target.value });
   };
-  const handleStarTypeChange = planetTypeIndex => {
-    dispatch({ type: SET_STAR_TYPE, payload: starTypes[planetTypeIndex] });
+  const handleStarTypeChange = e => {
+    const starType = e.target.value;
+    dispatch({ type: SET_STAR_TYPE, payload: starType });
   };
   const handleStarMassChange = planetMass => {
     dispatch({
@@ -83,36 +85,47 @@ const StarForm = ({ star, currentSystemStar }) => {
   const starTypeIndex = starTypes.findIndex(starType => starType === star.type);
 
   return (
-    <div>
-      <Input
-        placeholder={"Star name"}
-        value={star.name}
-        onChange={handleStarNameChange}
-      />
-      <h3>type</h3>
-      <TypesCarousel
-        selectedTypeIndex={starTypeIndex}
-        types={starTypes}
-        onChange={handleStarTypeChange}
-      />
-      <h3>wielkosc</h3>
-      <Slider
-        {...starMassRange}
-        step={0.01}
-        value={starMass}
-        onChange={handleStarMassChange}
-      />
-      <h3>temperatura</h3>
-      <Slider
-        {...starTempRange}
-        step={1}
-        value={starTemp}
-        onChange={handleStarTemperatureChange}
-      />
-      <Button type="submit" onClick={addStarToSystem}>
-        {currentSystemStar === null ? "ADD" : "UPDATE"} STAR
-      </Button>
-    </div>
+    <StyledForm>
+      <StyledFormGroup>
+        <p>Star name:</p>
+        <Input
+          placeholder={"Star name"}
+          value={star.name}
+          onChange={handleStarNameChange}
+        />
+      </StyledFormGroup>
+      <StyledFormGroup>
+        <p>Star type:</p>
+        <Radio.Group size={"small"} onChange={handleStarTypeChange}>
+          {starTypes.map(type => (
+            <Radio.Button value={type}>{type}</Radio.Button>
+          ))}
+        </Radio.Group>
+      </StyledFormGroup>
+      <StyledFormGroup>
+        <p>Mass:</p>
+        <Slider
+          {...starMassRange}
+          step={0.01}
+          value={starMass}
+          onChange={handleStarMassChange}
+        />
+      </StyledFormGroup>
+      <StyledFormGroup>
+        <p>Star temp:</p>
+        <Slider
+          {...starTempRange}
+          step={1}
+          value={starTemp}
+          onChange={handleStarTemperatureChange}
+        />
+      </StyledFormGroup>
+      <StyledFormGroup>
+        <ColorBtn type="submit" onClick={addStarToSystem}>
+          {currentSystemStar === null ? "ADD" : "UPDATE"} STAR
+        </ColorBtn>
+      </StyledFormGroup>
+    </StyledForm>
   );
 };
 
