@@ -19,7 +19,7 @@ import {
   ADD_PLANET_TO_SYSTEM,
   REMOVE_PLANET_FROM_SYSTEM
 } from "../../store/currentSystem/currentSystem.actions";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { isNil } from "ramda";
 import { StyledForm, StyledFormGroup } from "./PlanetForm.styled";
 import { ColorBtn } from "../ColorBtn/ColorBtn.styled";
@@ -113,6 +113,9 @@ const PlanetForm = ({ planet }) => {
         </ColorBtn>
       )}
       <StyledFormGroup>
+        <Link to={"/orbit"} style={{ marginRight: "1rem" }}>
+          Go back
+        </Link>
         <ColorBtn type="submit" onClick={addPlanetToSystem}>
           {isNil(planet.id) ? "ADD" : "UPDATE"} PLANET
         </ColorBtn>

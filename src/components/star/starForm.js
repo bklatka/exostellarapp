@@ -18,7 +18,7 @@ import {
   SET_STAR_TYPE
 } from "../../store/star/star.actions";
 import { ADD_STAR_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { StyledForm, StyledFormGroup } from "../planet/PlanetForm.styled";
 import { ColorBtn } from "../ColorBtn/ColorBtn.styled";
 
@@ -121,6 +121,9 @@ const StarForm = ({ star, currentSystemStar }) => {
         />
       </StyledFormGroup>
       <StyledFormGroup>
+        <Link to={"/orbit"} style={{ marginRight: "1rem" }}>
+          Go back
+        </Link>
         <ColorBtn type="submit" onClick={addStarToSystem}>
           {currentSystemStar === null ? "ADD" : "UPDATE"} STAR
         </ColorBtn>
