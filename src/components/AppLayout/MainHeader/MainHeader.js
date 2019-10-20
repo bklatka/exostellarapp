@@ -7,7 +7,7 @@ const MainHeader = props => {
     <div className="main-header">
       <MenuBtn />
       <GoalBtn />
-      <p className={"app-title"}>Exostellar.app</p>
+      {/*<p className={"app-title"}>Exostellar.app</p>*/}
     </div>
   );
 };
