@@ -48,7 +48,7 @@ const Modal = props => {
   };
 
   return (
-    <div>
+    <div className={"modal"}>
       <Badge count={missions.length}>
         <BorderButton onClick={open}>Missions</BorderButton>
       </Badge>

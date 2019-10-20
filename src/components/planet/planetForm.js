@@ -13,6 +13,7 @@ import {
   calculatePlanetMassPercent,
   calculatePlanetMassValueFromPercent,
   getPlanetTypes,
+  PLANET_TYPE_NAME,
   PLANETS_MASS_RANGE
 } from "../../planetSettings";
 import {
@@ -82,6 +83,11 @@ const PlanetForm = ({ planet }) => {
     dispatch({ type: CLEAR_PLANET_FORM });
   };
 
+  const close = () => {
+    dispatch({ type: CLOSE_MODAL });
+    dispatch({ type: CLEAR_PLANET_FORM });
+  };
+
   return (
     <StyledForm>
       <StyledFormGroup>
@@ -94,9 +100,13 @@ const PlanetForm = ({ planet }) => {
       </StyledFormGroup>
       <StyledFormGroup>
         <p>Type:</p>
-        <Radio.Group size={"small"} onChange={handlePlanetTypeChange}>
+        <Radio.Group
+          value={planet.type}
+          size={"small"}
+          onChange={handlePlanetTypeChange}
+        >
           {planetTypes.map(type => (
-            <Radio.Button value={type}>{type}</Radio.Button>
+            <Radio.Button value={type}>{PLANET_TYPE_NAME[type]}</Radio.Button>
           ))}
         </Radio.Group>
       </StyledFormGroup>
@@ -109,18 +119,10 @@ const PlanetForm = ({ planet }) => {
           onChange={handlePlanetMassChange}
         />
       </StyledFormGroup>
-      {!!planet.id && (
-        <ColorBtn
-          style={{ backgroundColor: "red" }}
-          onClick={removePlanetFromSystem}
-        >
-          remove
-        </ColorBtn>
-      )}
       <StyledFormGroup>
-        <Link to={"/orbit"} style={{ marginRight: "1rem" }}>
+        <button style={{ marginRight: "1rem" }} onClick={close}>
           Go back
-        </Link>
+        </button>
         <ColorBtn type="submit" onClick={addPlanetToSystem}>
           {isNil(planet.id) ? "ADD" : "UPDATE"} PLANET
         </ColorBtn>

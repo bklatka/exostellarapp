@@ -1,7 +1,13 @@
 export const PLANET_TYPE = {
-  GAS_GIANT: "Gas giant",
-  ICE_GIANT: "Ice giant",
-  ROCKY_PLANET: "Rocky planet"
+  GAS_GIANT: "GAS_GIANT",
+  ICE_GIANT: "ICE_GIANT",
+  ROCKY_PLANET: "ROCKY_PLANET"
+};
+
+export const PLANET_TYPE_NAME = {
+  [PLANET_TYPE.GAS_GIANT]: "Gas giant",
+  [PLANET_TYPE.ICE_GIANT]: "Ice giant",
+  [PLANET_TYPE.ROCKY_PLANET]: "Rocky planet"
 };
 
 export const PLANETS_MASS_RANGE = {
@@ -10,7 +16,7 @@ export const PLANETS_MASS_RANGE = {
   [PLANET_TYPE.ROCKY_PLANET]: { min: 0.01, max: 16.06 }
 };
 
-export const getPlanetTypes = () => Object.values(PLANET_TYPE);
+export const getPlanetTypes = () => Object.keys(PLANET_TYPE);
 
 export const calculatePlanetMassPercent = (planetType, planetMass) => {
   const range =
@@ -31,5 +37,5 @@ export const calculatePlanetMassValueFromPercent = (
           PLANETS_MASS_RANGE[planetType].min)) /
         100 +
       PLANETS_MASS_RANGE[planetType].min
-    ).toFixed(2)
+    ).toFixed(10)
   );
