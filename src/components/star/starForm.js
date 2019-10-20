@@ -21,6 +21,9 @@ import { ADD_STAR_TO_SYSTEM } from "../../store/currentSystem/currentSystem.acti
 import { Link, Redirect } from "react-router-dom";
 import { StyledForm, StyledFormGroup } from "../planet/PlanetForm.styled";
 import { ColorBtn } from "../ColorBtn/ColorBtn.styled";
+import TypesCarousel from "../typesCarousel";
+import { CLOSE_MODAL } from "../../store/modal/modal.actions";
+import { CLEAR_PLANET_FORM } from "../../store/planet/planet.actions";
 
 const StarForm = ({ star, currentSystemStar }) => {
   const [redirect, setRedirect] = useState();
@@ -75,12 +78,16 @@ const StarForm = ({ star, currentSystemStar }) => {
       temperature: starTemp
     };
     dispatch({ type: ADD_STAR_TO_SYSTEM, payload: { ...starToSystem } });
-    setRedirect(`/orbit`);
+    dispatch({ type: CLOSE_MODAL });
   };
 
   if (redirect) {
     return <Redirect to={redirect} push />;
   }
+
+  const close = () => {
+    dispatch({ type: CLOSE_MODAL });
+  };
 
   const starTypeIndex = starTypes.findIndex(starType => starType === star.type);
 
@@ -96,7 +103,11 @@ const StarForm = ({ star, currentSystemStar }) => {
       </StyledFormGroup>
       <StyledFormGroup>
         <p>Star type:</p>
-        <Radio.Group size={"small"} onChange={handleStarTypeChange}>
+        <Radio.Group
+          value={star.type}
+          size={"small"}
+          onChange={handleStarTypeChange}
+        >
           {starTypes.map(type => (
             <Radio.Button value={type}>{type}</Radio.Button>
           ))}
@@ -121,9 +132,9 @@ const StarForm = ({ star, currentSystemStar }) => {
         />
       </StyledFormGroup>
       <StyledFormGroup>
-        <Link to={"/orbit"} style={{ marginRight: "1rem" }}>
+        <button style={{ marginRight: "1rem" }} onClick={close}>
           Go back
-        </Link>
+        </button>
         <ColorBtn type="submit" onClick={addStarToSystem}>
           {currentSystemStar === null ? "ADD" : "UPDATE"} STAR
         </ColorBtn>

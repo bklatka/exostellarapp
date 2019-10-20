@@ -13,6 +13,7 @@ import {
   calculatePlanetMassPercent,
   calculatePlanetMassValueFromPercent,
   getPlanetTypes,
+  PLANET_TYPE_NAME,
   PLANETS_MASS_RANGE
 } from "../../planetSettings";
 import {
@@ -23,6 +24,8 @@ import { Link, Redirect } from "react-router-dom";
 import { isNil } from "ramda";
 import { StyledForm, StyledFormGroup } from "./PlanetForm.styled";
 import { ColorBtn } from "../ColorBtn/ColorBtn.styled";
+import TypesCarousel from "../typesCarousel";
+import { CLOSE_MODAL } from "../../store/modal/modal.actions";
 
 const PlanetForm = ({ planet }) => {
   const [redirect, setRedirect] = useState();
@@ -63,7 +66,8 @@ const PlanetForm = ({ planet }) => {
 
     dispatch({ type: ADD_PLANET_TO_SYSTEM, payload: planetSystem });
     dispatch({ type: CLEAR_PLANET_FORM });
-    setRedirect("/orbit");
+    dispatch({ type: CLOSE_MODAL });
+    dispatch({ type: CLEAR_PLANET_FORM });
   };
 
   if (redirect) {
@@ -75,6 +79,13 @@ const PlanetForm = ({ planet }) => {
 
   const removePlanetFromSystem = () => {
     dispatch({ type: REMOVE_PLANET_FROM_SYSTEM, payload: planet.id });
+    dispatch({ type: CLOSE_MODAL });
+    dispatch({ type: CLEAR_PLANET_FORM });
+  };
+
+  const close = () => {
+    dispatch({ type: CLOSE_MODAL });
+    dispatch({ type: CLEAR_PLANET_FORM });
   };
 
   return (
@@ -89,9 +100,13 @@ const PlanetForm = ({ planet }) => {
       </StyledFormGroup>
       <StyledFormGroup>
         <p>Type:</p>
-        <Radio.Group size={"small"} onChange={handlePlanetTypeChange}>
+        <Radio.Group
+          value={planet.type}
+          size={"small"}
+          onChange={handlePlanetTypeChange}
+        >
           {planetTypes.map(type => (
-            <Radio.Button value={type}>{type}</Radio.Button>
+            <Radio.Button value={type}>{PLANET_TYPE_NAME[type]}</Radio.Button>
           ))}
         </Radio.Group>
       </StyledFormGroup>
@@ -104,18 +119,10 @@ const PlanetForm = ({ planet }) => {
           onChange={handlePlanetMassChange}
         />
       </StyledFormGroup>
-      {!!planet.id && (
-        <ColorBtn
-          style={{ backgroundColor: "red" }}
-          onClick={removePlanetFromSystem}
-        >
-          remove
-        </ColorBtn>
-      )}
       <StyledFormGroup>
-        <Link to={"/orbit"} style={{ marginRight: "1rem" }}>
+        <button style={{ marginRight: "1rem" }} onClick={close}>
           Go back
-        </Link>
+        </button>
         <ColorBtn type="submit" onClick={addPlanetToSystem}>
           {isNil(planet.id) ? "ADD" : "UPDATE"} PLANET
         </ColorBtn>
