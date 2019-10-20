@@ -14,7 +14,6 @@ const PlanetView = props => {
 
   return (
     <AppLayout>
-      <h1>Planet form {JSON.stringify(planetFormData)}</h1>
       <PlanetForm planet={planetFormData} />
     </AppLayout>
   );
