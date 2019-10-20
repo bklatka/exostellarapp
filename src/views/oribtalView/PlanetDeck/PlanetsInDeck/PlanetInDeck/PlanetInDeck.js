@@ -18,10 +18,10 @@ import {
 } from "../../../../../store/orbitalView/orbitalView.actions";
 import { MONITOR_STATE } from "../../../../../store/orbitalView/orbitalView.reducer";
 import { Redirect } from "react-router-dom";
+import { UNASSIGN_PLANET_FROM_ORBIG } from "../../../../../store/currentSystem/currentSystem.actions";
 import VisualPlanet from "../../../SystemMonitor/Planet/VisualPlanet";
 import { BorderButton } from "../../../../../components/BorderedButton/BorderedButton";
 import { ColorBtn } from "../../../../../components/ColorBtn/ColorBtn.styled";
-import {UNASSIGN_PLANET_FROM_ORBIG} from "../../../../../store/currentSystem/currentSystem.actions";
 
 const PlanetInDeck = ({ planet, editable }) => {
   const dispatch = useDispatch();
@@ -59,11 +59,16 @@ const PlanetInDeck = ({ planet, editable }) => {
         <DualInfo>
           <DualInfoBlock>
             <DualInfoLabel>Mass</DualInfoLabel>
-            <span>{planet.mass}</span>
+            <span>
+              {planet.mass}
+              <sub>Me</sub>
+            </span>
           </DualInfoBlock>
           <DualInfoBlock>
             <DualInfoLabel>Atmosphere</DualInfoLabel>
-            <span>{planet.mass}</span>
+            <span>
+              H<sub>2</sub>SO<sub>4</sub>
+            </span>
           </DualInfoBlock>
         </DualInfo>
 

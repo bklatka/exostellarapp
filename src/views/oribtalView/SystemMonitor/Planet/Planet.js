@@ -25,7 +25,7 @@ const planetType = "gas";
 
 const Planet = ({ planet }) => {
   const star = useSelector(getCurrentSystemStar);
-  const planetTemp = kelvinToCelcius(getPlanetTemperature(planet, { mass: 1 }));
+  const planetTemp = kelvinToCelcius(getPlanetTemperature(planet, star));
   return (
     <StyledPlanetWrapper orbitSize={planet.orbit}>
       <StyledPlanet planetType={planetType}>

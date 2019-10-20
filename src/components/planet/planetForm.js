@@ -116,6 +116,8 @@ const PlanetForm = ({ planet }) => {
       />
       <h3>Hue picker</h3>
       <HuePicker color={planet.hueColor} onChange={handleHuePickerChange} />
+      {!!planet.id && <button onClick={removePlanetFromSystem}>remove</button>}
+
       <Button type="submit" onClick={addPlanetToSystem}>
         {isNil(planet.id) ? "ADD" : "UPDATE"} PLANET
       </Button>

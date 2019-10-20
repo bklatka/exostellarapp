@@ -103,7 +103,7 @@ export const DualInfoBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.7rem;
+  padding: 0.4rem;
   text-align: center;
 `;
 
