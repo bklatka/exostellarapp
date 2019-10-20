@@ -18,7 +18,10 @@ import {
   getPlanetTypes,
   PLANETS_MASS_RANGE
 } from "../../planetSettings";
-import { ADD_PLANET_TO_SYSTEM } from "../../store/currentSystem/currentSystem.actions";
+import {
+  ADD_PLANET_TO_SYSTEM,
+  REMOVE_PLANET_FROM_SYSTEM
+} from "../../store/currentSystem/currentSystem.actions";
 import { Redirect } from "react-router-dom";
 import { isNil } from "ramda";
 import TypesCarousel from "../typesCarousel";
@@ -79,6 +82,10 @@ const PlanetForm = ({ planet }) => {
     planetType => planetType === planet.type
   );
 
+  const removePlanetFromSystem = () => {
+    dispatch({ type: REMOVE_PLANET_FROM_SYSTEM, payload: planet.id });
+  };
+
   return (
     <div>
       <Input
@@ -112,6 +119,11 @@ const PlanetForm = ({ planet }) => {
       <Button type="submit" onClick={addPlanetToSystem}>
         {isNil(planet.id) ? "ADD" : "UPDATE"} PLANET
       </Button>
+      {!isNil(planet.id) ? (
+        <Button type="submit" onClick={removePlanetFromSystem}>
+          DELETE PLANET
+        </Button>
+      ) : null}
     </div>
   );
 };
